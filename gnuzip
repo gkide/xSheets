@@ -1,0 +1,4 @@
+---
+tags: [ compress, decompress ]
+---
+gunzip -d XYZ.gz # 解压缩

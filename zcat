@@ -1,0 +1,4 @@
+---
+tags: [ compress, decompress ]
+---
+zcat -d XYZ.gz # 解压缩

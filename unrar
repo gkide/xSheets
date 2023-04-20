@@ -1,0 +1,5 @@
+---
+tags: [ compress, decompress ]
+---
+rar l abc.rar     # 不解压，查看压缩包内文件列表
+unrar l abc.rar   # 不解压，查看压缩包内文件列表

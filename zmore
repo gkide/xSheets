@@ -1,0 +1,6 @@
+---
+tags: [ compress, decompress ]
+---
+# 适用于 zip、gzip 压缩包中文件数目不多的情况
+zless XYZ.zip    # 不解压，查看压缩包文件列表
+zmore XYZ.zip    # 不解压，查看压缩包文件列表

@@ -1,0 +1,6 @@
+---
+tags: [ packag management ]
+---
+# Install the exactly version of package, works well to rollback a prvious version
+cat /var/log/dpkg.log | grep upgrade | grep PackageName # Pick the version you want
+sudo apt install PackageName=PackageVersion # Rollback to PackageVersion

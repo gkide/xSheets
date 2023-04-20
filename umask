@@ -1,0 +1,38 @@
+---
+tags: [ bash ]
+---
+# Managing the umask
+# The 'umask' utility can be used to display, set, or change the current or default value of the umask.
+# https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/assembly_managing-the-umask_configuring-basic-system-settings
+
+# To display the current value of the umask in symbolic mode
+# Ownership Levels
+#   u => User, g => Group, o => Other,  a => All
+# Permissions
+#   r => Read, w => Write, x => Execute
+# Permissions Operator
+#   +  to add permissions on top of the existing permissions
+#   -  to remove the permissions from the existing permissions
+#   =  to remove the existing permissions and explicitly define the new ones
+#      Any permission that is not specified after the = is automatically prohibited
+
+# To display the current value of the umask in the octal mode
+# NOTE: It will displayed as a four digit number, like 0002.
+# The first digit of the umask represents a special bit, which
+# is sticky bit: SGID bit or SUID bit. If the first digit is
+# set to 0, the special bit is not set.
+
+# Determining if you are working in a login or a non-login bash shell
+echo $0
+# => If the output returns 'bash', you are executing the command in a non-login shell
+#    The default umask for non-login shell is set in /etc/bashrc configuration file
+#    NOTE: Debian/Ubuntu system use /etc/bash.bashrc configuration fille instead
+# => If the output returns '-bash', you are executing the command in a login shell
+#    The default umask for login shell is set in /etc/profile configuration file
+
+umask     # 八进制模式显示
+umask -S  # 符号模式显示,显示的权限等于 touch 产生文件的权限(x权限不会自动添加)
+
+# To set the umask for the current shell session
+umask -S a=rwx # set the umask to u=rwx,g=rwx,o=rwx
+umask -S u=rw,g=r,o=r # set the umask to u=rw,g=r,o=r

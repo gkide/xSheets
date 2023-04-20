@@ -1,0 +1,17 @@
+---
+tags: [ system info ]
+---
+# 显示 hostname 的方式
+hostname
+hostnamectl
+
+# 修改 hostname 的几种方式
+# => 临时修改，仅当前 Shell 有效
+sudo hostname NewName
+# => 永久修改，重启或再次登陆后生效
+#  1. 修改文件 /etc/hostname，旧名字 -> 新名字
+#  2. 修改文件 /etc/hosts，旧名字 -> 新名字
+#  3. Logout, Login 后生效
+#
+# => 永久修改，重启或再次登陆后生效
+hostnamectl set-hostname NewName

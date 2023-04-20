@@ -1,0 +1,48 @@
+---
+tags: [ process info ]
+---
+# ps => Processes Status
+# 1. UNIX options, which may be grouped and must be preceded by a dash (-)
+# 2. BSD options, which may be grouped and must not be used with a dash.
+# 3. GNU long options, which are preceded by two dashes (–)
+
+# Display processes associated with the current shell
+# => PID   The process ID of the process
+# => TTY   The name of the terminal session (shell) that the process is running within
+# => TIME  The amount of CPU time used by the process
+# => CMD   The name of the command that was entered to create the process
+ps
+
+# Display all processes running on the system
+ps -e   OR  $ ps -A
+
+# Display full-format listing, output info format
+# => UID     The user ID of the process’s owner
+# => PPID    The PID of the process’s parent process
+# => C       The amount of processor time utilized by the process
+# => RSS     How much RAM is utilized at the time the command is output
+# => PSR     Processor that process is currently assigned to
+# => STIME   The time that the process started
+ps -ef  OR  $ ps -eF
+
+# Display long format of the ps output
+# => F     The flags associated with the process.
+# => S     The state of the process. This column uses the following codes:
+#          D   Uninterruptible sleep
+#          R   Running
+#          S   Interruptible sleep
+#          T   Stopped or traced
+#          Z   Zombie
+# => PRI   The priority of the process.
+# => NI    The nice value of the process.
+# => ADDR  The memory address of the process.
+# => SZ    The size of the process.
+# => WCHAN The name of the kernel function in which the process is sleeping.
+#          A dash (–) in this column means the process is currently running.
+ps -efl   OR  $ ps -eFl
+
+# Display all processes in Bsd format
+ps au   OR  $ ps aux
+
+# Display all processes whose effective user ID (EUID) or name is in the userlist
+ps -fu frank  OR $ ps -fu 1000

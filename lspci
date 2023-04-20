@@ -1,0 +1,10 @@
+---
+tags: [ kernel ]
+---
+# 在 PCI 设备中查找音频相关设备信息
+$ sudo lspci -vv | grep -i audio
+# -v     Be verbose and display detailed information about all devices.
+# -vv    Be very verbose and display more details. This level includes everything deemed useful.
+# -vvv   Be even more verbose and display everything we are able to parse, even if it doesn't look interesting at all
+# -k     Show kernel drivers handling each device and also kernel modules capable of handling it.
+#        Turned on by default when -v is given in the normal mode of output.

@@ -1,0 +1,51 @@
+---
+tags: [ packag management ]
+---
+# Print the version of snap client, snapd daemon, snap series number, os and kernel:
+snap version
+
+# To find available packages form the snap store
+snap find AppName
+
+# Displays a summary of snaps installed in the current system
+#
+#  Name        The name of the snap package that was installed.
+#  Version     The version number of the software in the snap package.
+#  Rev         The revision number of the snap package.
+#  Tracking    The channel this snap package monitors for updates. There are four:
+#  => Stable      The default channel. As its name states, this channel contains the most stable packages.
+#  => Candidate   This channel is less stable, but very close to it because it contains release candidate
+#                 level software, which is code-complete. It goes through final testing before it’s moved
+#                 to the stable channel.
+#  => Beta        This channel is late development-cycle quality, but it’s not guaranteed to be stable.
+#  => Edge        For early build testers. You shouldn’t use this channel for important work or on a
+#                 production computer. Here be dragons!
+#  => Publisher   The individual, company, or organization that released the snap package.
+#                 If it was a verified publisher (and your terminal window supports Unicode), you’ll see
+#                 a green check mark beside the name of the publisher. If it can’t show a check mark,
+#                 you’ll see an asterisk (*).
+#  Notes       Any comments or additional information will appear here.
+snap list
+snap list --all # Show all revisions
+
+# You can use the info option to get a description of a snap package
+snap info AppName # Shows up the detail info of a snap package
+
+# Update the installled snaps Apps
+snap refresh --list # Show the new versions of snaps that would be updated with the next refresh
+sudo snap refresh # Update all installed snaps apps in system
+sudo snap refresh AppName # Check and update AppName package
+sudo snap refresh AppName --channel=ChannelName # Change the channel a package tracks for updates
+                                                # '$ snap info AppName' gives some other channel
+                                                # which can be used here as ChannelName
+cheat snap-refresh # for more details
+
+# To uninstall and remove snap package
+sudo snap remove AppName                          # Remove AppName instance from the system
+sudo snap remove AppName --revision=RevisionName  # Remove only the given revision
+
+# To install snap packages
+sudo snap install AppName
+
+# Extra Info
+/var/lib/snapd/snaps/* # Contains ssnap retains packages cached files, like /var/cache/apt/archives/*

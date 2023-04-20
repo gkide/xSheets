@@ -1,0 +1,12 @@
+---
+tags: [ packag management ]
+---
+# Managing updates
+# https://forum.snapcraft.io/t/managing-updates/7022
+
+# Show the last refresh time and the next scheduled refresh time
+snap refresh --time
+
+# Show details about what changed during the last refresh
+snap changes
+snap change ID # ID is the output of 'snap changes'

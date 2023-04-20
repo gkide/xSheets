@@ -1,5 +1,5 @@
 ---
-tags: [ packag management ]
+tags: [ package management ]
 ---
 # Print the version of snap client, snapd daemon, snap series number, os and kernel:
 snap version
@@ -47,5 +47,5 @@ sudo snap remove AppName --revision=RevisionName  # Remove only the given revisi
 # To install snap packages
 sudo snap install AppName
 
-# Extra Info
-/var/lib/snapd/snaps/* # Contains ssnap retains packages cached files, like /var/cache/apt/archives/*
+# Contains ssnap retains packages cached files, like /var/cache/apt/archives/*
+/var/lib/snapd/snaps/*

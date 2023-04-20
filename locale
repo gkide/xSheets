@@ -1,0 +1,80 @@
+---
+tags: [ language ]
+---
+参考链接
+=> https://wiki.archlinux.org/title/Locale
+=> https://www.tecmint.com/set-system-locales-in-linux
+=> https://superuser.com/questions/392439/lang-and-language-environment-variable-in-debian-based-systems
+=> https://help.ubuntu.com/community/EnvironmentVariables#The_LANGUAGE_priority_list
+
+# There are several special environment variables that determine how various locale-specific tasks should be handled.
+LC_CTYPE            # 文字语言符号处理
+LC_NUMERIC          # 数字显示格式
+LC_TIME             # 时间日期显示格式
+LC_COLLATE          # 字符串的比较排序
+LC_MONETARY         # 货币符号单位
+LC_MESSAGES         # 信息显示，大多程序直接使用 LANGUAGE
+LC_PAPER            # 纸张大小
+LC_NAME             # 姓名显示格式
+LC_ADDRESS          # 地址显示格式
+LC_TELEPHONE        # 电话相关
+LC_MEASUREMENT      # 度量衡
+LC_IDENTIFICATION   # locale 的元数据概述
+LC_ALL              # Overrides the locale for all LC_* variables and LANG
+
+LANG                # Specifies the default locale for all unset locale variables
+LANGUAGE            # Most programs use this for the language of its interface
+
+[语言[_地域][.字符集] [@修正值]
+语言     ISO 639 language code
+地域     ISO 3166 country code
+字符集   Character set or Encoding identifier, like ISO-8859-1 or UTF-8
+
+# 优先级
+LANGUAGE > LC_ALL > LC_* > LANG
+
+# LANGUAGE should not be assigned a complete locale name including the encoding part (e.g. ".UTF-8").
+# Instead LANGUAGE should contain a colon separated priority list of language codes, for instance "es:de:en".
+# A single language code is also correct.
+#
+# By default, an English message is shown. If put 'en' in LANGUAGE，it actually has no effect.
+#
+# NOTE The variable LANGUAGE is ignored if the locale is set to 'C'. In other words, you have
+# to first enable localization, by setting LANG or LC_ALL to a value other than 'C', before
+# you can use a language priority list through the LANGUAGE variable.
+#
+# If setting LANGUAGE to 'fr:de:en', then
+# => use French messages where it exist, if not
+# => use German messages where it exist, if not
+# => fall back to English if neither German nor French messages are available
+#
+# https://www.gnu.org/software/gettext/manual/html_node/The-LANGUAGE-variable.html
+
+# LANG 和 LANGUAGE 的区别
+LANGUAGE # 设置应用程序(GUI/TUI)的界面语言，而 LANG 是优先级很低的一个变量，它指定所有与 locale 有关
+         # 的变量(LC_*)的默认值，例如如果 LC_MESSAGE 没有被用户设置，则 LC_MESSAGE 的取值由 LANG 确定。
+LANG     # 由用户选择的默认 locale 决定(系统设置)，例如系统默认 locale 是 zh_CN.UTF-8，则 LANG=zh_CN.UTF-8
+
+man 1 locale      # Get locale-specific information
+man 7 locale      # Description of multilanguage support
+man 3 setlocale   # Set the current locale, about LC_*
+
+locale            # 显示当前本地化设置内容
+locale -a         # 显示系统可用的本地化设置选项
+localectl         # 显示系统本地话配置和键盘布局
+localectl status  # 显示系统本地话配置和键盘布局
+locale -k LC_TIME # 查看关于时间格式的本地话设置信息
+
+# 系统本地化设置
+sudo update-locale LANG=en_US.UTF-8           # 系统本地化设置(方式一)
+sudo localectl set-locale LANG=en_US.UTF-8    # 系统本地化设置(方式二)
+sudo update-locale LANGUAGE                   # LANGUAGE 设置为空(方式一)
+sudo localectl set-locale LANGUAGE            # LANGUAGE 设置为空(方式二)
+
+# 系统本地化设置文件位置
+/etc/locale.conf      # CentOS/RHEL ...
+/etc/default/locale   # Ubuntu/Debian ...
+
+# 用户级别本地化设置
+修改 ~/.bashrc 文件，添加 'export LANGUAGE='
+修改 ~/.bashrc 文件，添加 'export LANG=en_US.UTF-8 ...'

@@ -1,5 +1,5 @@
 ---
-tags: [ language ]
+tags: [ language, terminal, system ]
 ---
 参考链接
 => https://wiki.archlinux.org/title/Locale
@@ -78,3 +78,11 @@ sudo localectl set-locale LANGUAGE            # LANGUAGE 设置为空(方式二)
 # 用户级别本地化设置
 修改 ~/.bashrc 文件，添加 'export LANGUAGE='
 修改 ~/.bashrc 文件，添加 'export LANG=en_US.UTF-8 ...'
+
+############
+# Also See #
+############
+cheat -t system
+cheat -t terminal
+cheat -t language
+

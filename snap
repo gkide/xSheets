@@ -49,3 +49,8 @@ sudo snap install AppName
 
 # Contains ssnap retains packages cached files, like /var/cache/apt/archives/*
 /var/lib/snapd/snaps/*
+
+############
+# Also See #
+############
+cheat -t 'package management'

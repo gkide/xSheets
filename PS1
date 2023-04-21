@@ -85,3 +85,8 @@ echo -e "\e[32;41mTEXT\e[m"
 5      闪烁
 7      反白显示
 8      不可见
+
+############
+# Also See #
+############
+cheat -t terminal

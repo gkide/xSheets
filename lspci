@@ -8,3 +8,8 @@ $ sudo lspci -vv | grep -i audio
 # -vvv   Be even more verbose and display everything we are able to parse, even if it doesn't look interesting at all
 # -k     Show kernel drivers handling each device and also kernel modules capable of handling it.
 #        Turned on by default when -v is given in the normal mode of output.
+
+############
+# Also See #
+############
+cheat -t kernel

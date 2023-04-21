@@ -15,3 +15,8 @@ sudo hostname NewName
 #
 # => 永久修改，重启或再次登陆后生效
 hostnamectl set-hostname NewName
+
+############
+# Also See #
+############
+cheat -t 'system info'

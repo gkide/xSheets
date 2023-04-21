@@ -5,3 +5,9 @@ zip -sf XYZ.zip             # 查看压缩包文件列表
 unzip -l XYZ.zip            # 查看压缩包文件列表
 unzip -c XYZ.zip            # 查看压缩包所有内文件的内容
 unzip -c XYZ.zip FileName   # 查看压缩包内指定文件内容
+
+############
+# Also See #
+############
+cheat -t compress
+cheat -t decompress

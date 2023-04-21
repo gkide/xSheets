@@ -10,3 +10,8 @@ snap refresh --time
 # Show details about what changed during the last refresh
 snap changes
 snap change ID # ID is the output of 'snap changes'
+
+############
+# Also See #
+############
+cheat -t 'package management'

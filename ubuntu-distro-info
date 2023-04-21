@@ -3,3 +3,8 @@ tags: [ ubuntu ]
 ---
 # Provides information about Ubuntu's distributions
 man ubuntu-distro-info
+
+############
+# Also See #
+############
+cheat -t 'system info'

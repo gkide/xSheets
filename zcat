@@ -2,3 +2,9 @@
 tags: [ compress, decompress ]
 ---
 zcat -d XYZ.gz # 解压缩
+
+############
+# Also See #
+############
+cheat -t compress
+cheat -t decompress

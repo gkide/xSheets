@@ -2,3 +2,9 @@
 tags: [ compress, decompress ]
 ---
 zipinfo XYZ.zip # 显示 zip 压缩包的详细信息
+
+############
+# Also See #
+############
+cheat -t compress
+cheat -t decompress

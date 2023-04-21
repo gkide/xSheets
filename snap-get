@@ -14,3 +14,8 @@ snap set system some.option! # from snapd v2.41+
 # which can be added as arguments to view their contents
 snap get system
 snap get system -d # output in JSON format
+
+############
+# Also See #
+############
+cheat -t 'package management'

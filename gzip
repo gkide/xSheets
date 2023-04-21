@@ -4,3 +4,9 @@ tags: [ compress, decompress ]
 gzip -d XYZ.gz          # 解压缩
 gzip -c file1  > foo.gz # 创建压缩包
 gzip -c file1 >> foo.gz # 向压缩包追加新文件
+
+############
+# Also See #
+############
+cheat -t compress
+cheat -t decompress

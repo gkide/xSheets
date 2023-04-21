@@ -2,3 +2,8 @@
 tags: [ package management ]
 ---
 cheat snap-get # for details
+
+############
+# Also See #
+############
+cheat -t 'package management'

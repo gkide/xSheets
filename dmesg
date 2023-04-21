@@ -3,3 +3,8 @@ tags: [ kernel ]
 ---
 # 显示 Linux 内核的缓存信息
 sudo dmesg | grep -i WHAT
+
+############
+# Also See #
+############
+cheat -t kernel

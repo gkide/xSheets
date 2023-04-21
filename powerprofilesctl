@@ -1,0 +1,16 @@
+---
+tags: [ battery, power, energy ]
+---
+# Makes power profiles handling available over D-Bus
+# Thus tool is default installed along with Ubuntu/KUbuntu
+# https://gitlab.freedesktop.org/hadess/power-profiles-daemon
+
+# Show up the usage
+powerprofilesctl help
+
+############
+# Also See #
+############
+cheat -t battery
+cheat -t power
+cheat -t energy

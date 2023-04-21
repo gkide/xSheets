@@ -1,0 +1,28 @@
+---
+tags: [ battery, power, energy ]
+---
+# Use the upower command to show the battery status in the Linux terminal.
+# UPower HomePage https://upower.freedesktop.org
+
+# --monitor           Monitor activity from the power daemon
+# --monitor-detail    Monitor with detail
+# -v, --version       Print version of client and daemon
+
+# List objects paths for all power devices
+upower -e
+upower --enumerate
+
+# Dump all parameters for all devices to stdout
+upower -d
+upower --dump
+
+# Show battery report & status about the given device
+upower --show-info path/to/device
+upower -i `upower -e | grep 'BAT'`
+
+############
+# Also See #
+############
+cheat -t battery
+cheat -t power
+cheat -t energy

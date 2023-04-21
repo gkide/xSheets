@@ -1,0 +1,10 @@
+---
+tags: [ system ]
+---
+systemctl list-units # List units that systemd currently has in memory
+systemctl list-unit-files # To show all installed unit files
+
+############
+# Also See #
+############
+cheat -t system

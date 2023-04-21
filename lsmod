@@ -1,0 +1,10 @@
+---
+tags: [ kernel ]
+---
+# List the loaded kernel modules
+lsmod
+
+############
+# Also See #
+############
+cheat -t kernel

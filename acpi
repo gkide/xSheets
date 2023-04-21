@@ -1,0 +1,44 @@
+---
+tags: [ kernel, system, battery ]
+---
+# ACPI is short of Advanced Configuration and Power Interface
+# Displays information from the /proc or the /sys filesystem
+# - https://wiki.archlinux.org/title/ACPI_modules
+# -
+
+# List the enabled ACPI modules for your running kernel
+# A small pice of ACPI kernel modules
+# => ac         power connector status
+# => fan        fan status
+# => i2c_ec     EC SMBus driver
+# => processor  processor status
+# => battery    battery status
+# => sbs        smart battery status
+# => video      status of video devices
+# => button     catch button events, like LID or POWER BUTTON
+ls -l /usr/lib/modules/$(uname -r)/kernel/drivers/acpi
+
+# The acpi package displays information from the /proc or the /sys filesystem,
+# such as battery status, thermal information, and more ACPI related information.
+apt-file list acpi # list package contents
+sudo apt install acpi
+
+# -b, --battery       show battery information
+# -a, --ac-adapter    show ac adapter information
+# -c, --cooling       show cooling device information
+# -V, --everything    show every device, overrides above options
+# -i, --details       show additional details if available:
+#                     * battery capacity information
+#                     * temperature trip points
+acpi -a
+acpi -b
+
+# System Power Related
+ls /sys/class/power_supply
+
+############
+# Also See #
+############
+cheat -t kernel
+cheat -t system
+cheat -t battery

@@ -1,8 +1,11 @@
 ---
 tags: [ kernel ]
 ---
+# 内核模块存储在 /lib/modules/<kernel-version> 目录中
+ls /lib/modules/$(uname -r)
+
 # List the loaded kernel modules
-lsmod
+lsmod # 读取 /proc/modules 并格式化显示
 
 ############
 # Also See #

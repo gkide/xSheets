@@ -1,0 +1,154 @@
+---
+tags: [ developer ]
+---
+# The general syntax for the find command
+# => StarPoint        The location from where to start search. By default, the
+#                     search is recursive and starts from your current location.
+# => Options          Specify the search options
+# => Expression       The name or pattern
+find [StarPoint] [Options] [Expression]
+
+# Dump all the files and directories in the current location recursively
+find
+
+# From current working directory, find file or directory who's name is xfile
+find . -name xfile   # case-sensitive
+find . -iname xfile  # case-insensitive
+
+# From current working directory
+find . -type f -name xfile    # find file who's name is xfile
+find . -type f -name "*.cpp"  # find files who's extension matches .cpp
+
+# From current working directory, find directory who's name is xfile
+find . -type d -name xfile
+
+# To find all the empty files and directories in the current directory
+find . -empty         # Empty files or directories
+find . -empty -type f # Empty files
+find . -empty -type d # Empty directories
+
+# c: bytes, k: kilobytes, M: Megabytes, G: Gigabytes
+find . -size 50k      # Find files of exactly 50 KB in size
+find . -size +1G      # To search for files bigger than 1 GB
+find . -size -20c     # To find smaller than 20 bytes
+
+# To find files bigger than 100 MB but smaller than 2 GB in size
+find . -size +100M -size -2G
+find . -size +100M -a -size -2G
+# Search for files with name ending in .log, and size greater than 50 MB
+find /var/log -size +50M -name "*.log"
+
+# ctime: creation time of the file, basic unit is a day (24 H)
+# atime: last access time of the file, basic unit is a day (24 H)
+# mtime: last modification time of file, basic unit is a day (24 H)
+#
+# To find the files modified within 3 days (3*24H)
+find . -type f -mtime -3 # -3 means from 3 days ago until now
+# To find the files created at least 5 days (5*24H) ago
+find . -type f -ctime +5 # +5 means from ... until 5 days ago
+
+# cmin: creation time of the file, basic unit is a minute (60 seconds)
+# amin: last access time of the file, basic unit is a minute (60 seconds)
+# mmin: last modification time of file, basic unit is a minute (60 seconds)
+#
+# To find the files that were modified in the last 5 minutes
+find . -type f -mmin -5
+# Search for .java files that have been modified between last 20 to 30 minutes
+find . -type f -mmin -30 -mmin +20 -name "*.java"
+
+# To find files who's access mode is 777 in the current directory
+find . -perm 777
+# To find all files with access of read and write for all(exact match)
+find . -perm a=r+w # a file with execute permission will not match
+
+# To find files owned by John in the current directory
+find . -type f -user John
+find . -type f -user John -name "*.cpp"
+
+# Search to only the current directory and excludes any subdirectories
+find . -maxdepth 1 -type f -name "*.txt"
+# Exclude a directory from search
+find . -path "./ExcludeDirName/*" -prune -o -name SEARCH_NAME
+
+# If want to take an action on the result of find command, there are two options
+# => exec
+# => xargs
+
+# Show the long list (ls -l) on search files with find command
+# => The {} is what references the result of the find command.
+# => The + sign is used to terminate the exec command.
+find . -type f -name "*.txt" -exec ls -l {} + # a space between {} and +
+find . -type f -name "*.txt" -exec ls -l {} \; # escape ; for shell
+# The {} +  runs fewer commands => ls -l file1 file2 file3 ...
+# The {} \; runs more  commands => ls -l file1, ls -l file2 ...
+
+# Rename all the found files with .old extension, which {} + can NOT do
+find . -type f -name "*.txt" -exec mv {} {}.old \;
+
+# The xargs version of long list
+find . -type f -name "*.txt" | xargs ls -l
+# Search for all the .txt files that contain Alice
+find . -type f -name "*.txt" -exec grep -i Alice {} +
+find . -type f -name "*.txt" | xargs grep -i Alice
+
+# https://www.theunixschool.com/2012/07/find-command-15-examples-to-exclude.html
+#
+# Exclude Directories Using -prune
+# => The functionality of prune is: If the file is
+# => a directory, do not descend or traverse into it.
+#
+# How it works ?
+# find traverses through all the files in the entire tree and prints those
+# files matching the criteria specified. -prune will not allow the find
+# command to descend into the file any further if it is a directory. Hence,
+# when find starts with the current directory, prune does not allow it to
+# descend the current directory since itself is a directory, and hence only
+# the current directory gets printed, not the files within the directory.
+find . -prune # The output should just a dot
+
+# Find all files and directories present only in the current directory
+find . ! -name . -prune # prune any directory exclude current directory(.)
+
+# Keep in mind, the find command accepts a path or a series of paths to search.
+# This ./* gets translated to all the files and directories in the current directory.
+# So, from this list, prune will prevent from descending into the sub-directories.
+find ./* -prune
+
+# search for all files with the name temp, and prune tells not to traverse into
+# directories named temp. What prune achieved here is it would NOT print any files
+# inside any temp directory if they really exist.
+find . -name temp -prune
+
+# prune directories named .git, and all other file got printed
+# By default, the find command prints all the files matching the criteria.
+# However, once the -print option is specified, it will print files only on
+# explicit print instructions. -print is associated in the other side of the
+# OR condition, and hence nothing will get printed from the 1st part of the
+# condition, so .git will NOT shows up in the output results.
+find . -name .git -prune -o -print            # .git NOT printed
+find . -name .git -prune -o -name XYZ         # .git printed
+find . -name .git -prune -o -name XYZ -print  # .git NOT printed
+
+# Find all the .c files except the ones present in the C directory
+find . -type d -name C -prune -o -name "*.c" -print
+
+# Find all the .c files except the ones present in the C and temp directory
+find . -type d \( -name C -o -name temp \) -prune -o -name "*.c" -print
+find . -path "./C*" -prune -o -path "./temp*" -prune -o -name "*.c" -print
+
+# prune ./xyz directory, and print all others files and directories
+find . -name xyz -exec test '{}' = "./xyz" \; -prune -o -print
+
+# Find the list of all .c files except the ones present in the A directory
+find . ! -path "./A/*" -name "*.c"
+find . ! -path "./A/*" ! -path "./B/*" -name "*.c"
+find . ! -path "./A/*" -a ! -path "./B/*" -name "*.c"
+
+# NOTE
+# Always put your search expression in double quotes when using the find command.
+# This will prevent the shell expand the wildcard!
+
+############
+# Also See #
+############
+cheat -t developer

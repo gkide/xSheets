@@ -1,0 +1,52 @@
+---
+tags: [ package management, ubuntu, kubuntu ]
+---
+# APT系统资源存储位置
+/var/lib/dpkg                     # dpkg 系统缓存
+/var/lib/apt/lists                # apt 系统缓存
+/var/cache/apt/archives/          # apt 下载完的 deb 包
+/var/cache/apt/archives/partial   # apt 下载中的 deb 包
+
+apt edit-sources          # 编辑 sources.list 文件
+cat /etc/apt/sources.list # 显示 APT 源配置地址
+
+apt                     # 显示 APT 简要使用说明
+sudo apt update         # 更新本地缓存包列表(从设定的源)
+sudo apt upgrade        # 系统软件包更新(安装/升级)
+sudo apt full-upgrade   # 系统软件包更新(安装/升级/删除)
+apt list --upgradable   # 显示可以更新的软件包
+apt list --installed    # 列出系统所有已安装软件包
+
+# 清除 apt 系统缓存
+# 删除 /var/cache/apt/archives 的内容，锁定的文件除外
+sudo apt clean
+sudo apt autoclean # 仅删除当前系统不再支持的包，而非全部清空系统缓存
+
+apt list                  # 列出当前系统可以使用的所有软件包
+apt list --installed      # 列出系统已经安装的所有软件包
+apt list --upgradable     # 列出系统可以升级的所有软件包
+apt list --all -versions  # 列出系统中所有能找到的包及版本
+
+apt show xxx        等同于 apt-cache show xxx     # 显示软件包xxx的详细信息
+apt search xxx      等同于 apt-cache search xxx   # 搜索已经安装的应用程序
+apt install xxx     等同于 apt-get install xxx    # 安装软件包
+apt reinstall xxx   等同于 apt-get reinstall xxx  # 重新安装软件包
+apt remove xxx      等同于 apt-get remove xxx     # 移除软件包
+apt autoremove      等同于 apt-get autoremove     # 卸载所有自动安装且不再使用的软件包
+apt purge xxx       等同于 apt-get purge          # 移除软件包及其配置文件
+apt update          等同于 apt-get update         # 更新源列表信息
+apt upgrade         等同于 apt-get upgrade        # 更新系统所有已经安装的软件包
+apt full-upgrade    等同于 apt-get dist-upgrad    # 系统升级包并自动处理依赖关系
+
+# PPA => Personal Package Archives
+# PPA 地址格式：ppa:user/ppa-name
+sudo add-apt-repository ppa:user/ppa-name # 添加 PPA 源
+sudo add-apt-repository -r ppa:user/ppa-name # 删除 PPA 源
+删除 /etc/apt/sources.list.d 目录相应的 ppa 文件
+sudo apt-get update # 添加或删除 ppa 后更新
+
+############
+# Also See #
+############
+cheat -l apt
+cheat -t package management

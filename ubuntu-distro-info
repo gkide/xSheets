@@ -1,5 +1,5 @@
 ---
-tags: [ ubuntu ]
+tags: [ ubuntu, kubuntu, system info ]
 ---
 # Provides information about Ubuntu's distributions
 man ubuntu-distro-info

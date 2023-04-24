@@ -1,0 +1,75 @@
+---
+tags: [ terminal, shell ]
+---
+############################
+# 查看当前用户的默认 shell #
+############################
+printenv SHELL
+grep `whoami` /etc/passwd
+
+# 更改系统创建用户时的默认 shell
+SHELL=/bin/bash # 修改 /etc/default/useradd 文件
+
+# 显示系统已经安装的 shell
+cat /etc/shells
+
+#################################################
+# 将 UserName 用户的默认 shell 修改为 /bin/bash #
+#################################################
+sudo chsh -s /bin/bash UserName # 修改 /etc/passwd 文件
+sudo usermod -s /bin/bash UserName # -s is short of --shell
+sudo usermod --shell /bin/bash UserName # 修改 /etc/passwd 文件
+# NOTE: 修改默认 shell 后需要 logout 再 login 后生效
+
+############################
+# 查看当前正在使用的 shell #
+############################
+# $0 is the name of the running process. If you use it inside
+# of a shell then it will return the name of the shell. If you
+# use it inside of a script, it will be the name of the script.
+echo $0
+ls -l $(which $0) # show the linked file if $0 is a symlink
+
+printenv SHELL # $SHELL is the user's default shell, $0 is current shell instance
+echo "$$" # PID of the current instance of shell
+ps -p "$$" # The process of current shell instance
+ps -cp "$$" -o command="" # The name of current shell instance
+sh -c 'ps -p $$ -o ppid=' | xargs ps -o comm= -p
+sh -c 'ps -p $$ -o ppid=' | xargs -I'{}' readlink -f '/proc/{}/exe'
+lsof -p "$$" # Display all the loaded files of current runing shell
+lsof -p "$$" | grep -m 1 txt | xargs -n 1 | tail -n 1 # extract just the required info
+lsof -p "$$" | grep -m 1 txt | xargs -n 1 | tail -n +9 # extract just the required info
+ps -p $$ | awk '{if(NR>1)print}' | awk '$0=$NF' | tr -d -
+
+# Directly read current runing shell proc info
+readlink /proc/$$/exe # show full path
+basename $(readlink /proc/$$/exe) # show name only
+
+# 交互式和非交互式 shell 检测
+# https://tldp.org/LDP/abs/html/intandnonint.html#IITEST
+echo $0 # => for bash, $0 output 'bash' for non-login shell, '-bash' for login shell
+[[ "$-" == "*i*" ]] && echo "Interactive" || echo "Not Interactive" # for bash & zsh
+
+# Check Interactive Shell or Non-Interactive Shell in script
+  if [ -z $PS1 ]; then
+    ... # Non-Interactive Shell
+  else
+    ... # Interactive Shell
+  fi
+
+  case $- in
+    *i*)
+      ... # Interactive Shell
+      ;;
+    *)
+      ... # Non-Interactive Shell
+      ;;
+  esac
+
+############
+# Also See #
+############
+cheat -t zsh
+cheat -t bash
+cheat -t shell
+cheat -t terminal

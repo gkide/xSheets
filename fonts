@@ -1,0 +1,13 @@
+---
+tags: [ system, fonts ]
+---
+# 系统字体管理
+fc-list # 显示系统中所有已经安装的字体
+fc-list :lang=zh # 显示系统中已经安装的中文字体
+fc-cache # 扫描 ~/.fonts 目录下的字体，更新系统字体缓存
+mkfontscale # 生成系统字体缓存索引文件(在字体所在目录执行此命令)
+
+############
+# Also See #
+############
+cheat -t fonts

@@ -1,0 +1,22 @@
+---
+tags: [ system info ]
+---
+# Display distribution detail info
+lsb_release -a
+
+# Display the distributor ID
+lsb_release -is
+
+# Display the distributor Code Name
+lsb_release -cs
+
+# Display the distributor release number
+lsb_release -rs
+
+# Display distributor description
+lsb_release -ds
+
+############
+# Also See #
+############
+cheat -t 'system info'

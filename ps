@@ -47,6 +47,14 @@ ps au   OR  $ ps aux
 # Display all processes whose effective user ID (EUID) or name is in the userlist
 ps -fu frank  OR $ ps -fu 1000
 
+lsof -p "$$" # Display all the loaded files of current runing shell
+
+# '-p <PID>' list only process with PID form list suplied
+# '-h' or finishing all options with '=' for not showing any header
+# '-o comm' for showing only the process basename, e.g. bash instead of /bin/bash
+ps -h -o comm $$ # Show current process name, selected by PID
+ps -o comm= $$ # Show current process name, selected by PID
+
 ############
 # Also See #
 ############

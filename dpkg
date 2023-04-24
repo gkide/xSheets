@@ -1,0 +1,10 @@
+---
+tags: [ package management, ubuntu, kubuntu ]
+---
+# 显示所有已经安装的软件包列表
+dpkg --get-selections
+
+############
+# Also See #
+############
+cheat -t package management

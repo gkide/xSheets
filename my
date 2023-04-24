@@ -1,45 +1,10 @@
 ---
 tags: [ my ]
 ---
-# 本地化设置
-locale # 显示本地化语言设置
-export LANG=en_US.UTF-8 # 终端执行，临时设置为英语 UTF-8
-export LANG=zh_CN.UTF-8 # 终端执行，临时设置为中文 UTF-8
-export LANGUAGE=zh_CN.UTF-8 # 终端执行，临时设置翻译目标语言为中文
-export LANGUAGE=en_US.UTF-8:zh_CN.UTF-8 # 终端执行，临时设置翻译目标语言
-
-# 终端设置
-man ascii # 显示 ASCII 编码表
-man terminal-colors.d # 显示 ANSI 颜色编码表
-man console_codes # Linux console escape and control sequences
-
-# 环境变量
-env # 显示当前环境变量及其值
-printenv # 显示当前环境变量及其值
-printenv VAR # 显示指定环境变量的值
-echo $PATH | sed 's/:/\n/g' # 逐行显示 PATH 的值
-env EnvName=Value Program # 修改 Program 程序执行时的环境变量
-
-# Bash 的内置命令和加载的函数及变量定义
-help # 显示 Bash 内置命令的使用说明
-help test # test 或 [ ... ] 的使用说明
-type CmdName # 显示 CmdName 命令类型的信息
-declare -f # 显示函数定义
-declare -F # 显示函数名列表
-
 # 文件字符编码
 file FileName # 查看文件编码
 file -bi FileName # 查看文件编码
 encguess FileName # 查看文件编码
-
-# 软件包管理系统(apt)
-cat /etc/apt/sources.list # 显示 APT 源配置地址
-apt # 显示 APT 简要使用说明
-sudo apt update # 更新本地缓存包列表(从设定的源)
-sudo apt upgrade # 系统软件包更新(安装/升级)
-sudo apt full-upgrade # 系统软件包更新(安装/升级/删除)
-apt list --upgradable # 显示可以更新的软件包
-apt list --installed # 列出系统所有已安装软件包
 
 # 软件包管理系统(snap)
 snap version # 显示 snap 版本信息
@@ -53,9 +18,3 @@ sudo snap refresh # 更新系统中已经安装的所有软件包
 sudo snap refresh AppName # 更新 AppName 软件包
 sudo snap remove AppName # 卸载 AppName 软件包
 sudo snap install AppName # 安装 AppName 软件包
-
-# 字体管理
-fc-list # 显示系统中所有已经安装的字体
-fc-list :lang=zh # 显示系统中已经安装的中文字体
-fc-cache # 扫描 ~/.fonts 目录下的字体，更新系统字体缓存
-mkfontscale # 生成系统字体缓存索引文件(在字体所在目录执行此命令)

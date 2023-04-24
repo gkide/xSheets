@@ -1,0 +1,51 @@
+---
+tags: [ developer ]
+---
+gpg --full-generate-key # 生成新的公钥/私钥
+gpg --generate-revocation KeyID # 生成撤销证书
+
+gpg -k [KeyID]                  # 显示当前可用公钥列表
+gpg --list-keys                 # 显示当前可用公钥列表
+gpg -K [KeyID]                  # 显示当前可用私钥列表
+gpg --list-secret-keys          # 显示当前可用私钥列表
+gpg --list-sigs                 # 显示当前可用密钥和签名
+gpg --fingerprint [USERID]      # 查看指纹
+gpg --show-keys demo.sec.key    # 显示指定 KEY 文件的信息
+gpg --list-public-keys --keyid-format LONG [KeyID] # 显示公钥信息
+gpg --list-secret-keys --keyid-format LONG [KeyID] # 显示私钥信息
+
+gpg --delete-secret-keys KeyID  # 先删除私钥
+gpg --delete-keys KeyID         # 再删除公钥
+
+# 导出公钥/私钥
+# armor 参数表示将输出转换为 ASCII 格式码显示
+gpg --armor --export KeyID
+gpg --armor --export KeyID --output public-key.txt
+gpg --armor --export-secret-keys KeyID
+gpg --armor --export-secret-keys KeyID --output secret-key.txt
+
+# 导入公钥/私钥
+gpg --import public-key.txt
+gpg --import secret-key.txt
+
+# 公钥加密/私钥解密，私钥加密/公钥解密
+# -o, --output   -r, --recipient
+# -e, --encrypt  -d, --decrypt
+gpg -o demo.txt -d demo.txt.gpg # 解密文件
+gpg -o demo.txt.gpg -r KeyID -e demo.zh.txt # 加密文件
+
+# 生成签名文件，数字认证
+gpg --sign demo.txt # 二进制签名文件, 当前目录生成 demo.txt.gpg
+gpg --clearsign demo.txt # ASCII码签名文件, 当前目录生成 demo.txt.asc
+gpg --detach-sign demo.txt # 生成单独签名文件, 当前目录生成 demo.txt.sig
+gpg --armor --detach-sign demo.txt # 生成单独签名文件, ASCII 码签
+gpg --verify demo.txt.asc demo.txt # 验证文件签名
+
+# 上传公钥到指定公钥服务器
+gpg --send-keys KeyID --keyserver https://keys.openpgp.org
+gpg --send-keys KeyID --keyserver https://keyserver.ubuntu.com
+
+############
+# Also See #
+############
+cheat -t developer

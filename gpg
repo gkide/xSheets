@@ -1,15 +1,17 @@
 ---
 tags: [ developer ]
 ---
+gpg --generate-key # 生成新的公钥/私钥
 gpg --full-generate-key # 生成新的公钥/私钥
 gpg --generate-revocation KeyID # 生成撤销证书
+gpg --generate-revocation --armor --output ./MyRevokeKey.asc KeyID # 生成撤销证书
 
 gpg -k [KeyID]                  # 显示当前可用公钥列表
-gpg --list-keys                 # 显示当前可用公钥列表
+gpg gpg --list-keys [KeyID]     # 显示当前可用公钥列表
 gpg -K [KeyID]                  # 显示当前可用私钥列表
-gpg --list-secret-keys          # 显示当前可用私钥列表
+gpg --list-secret-keys [KeyID]  # 显示当前可用私钥列表
 gpg --list-sigs                 # 显示当前可用密钥和签名
-gpg --fingerprint [USERID]      # 查看指纹
+gpg --fingerprint [KeyID]       # 查看指纹
 gpg --show-keys demo.sec.key    # 显示指定 KEY 文件的信息
 gpg --list-public-keys --keyid-format LONG [KeyID] # 显示公钥信息
 gpg --list-secret-keys --keyid-format LONG [KeyID] # 显示私钥信息
@@ -17,16 +19,34 @@ gpg --list-secret-keys --keyid-format LONG [KeyID] # 显示私钥信息
 gpg --delete-secret-keys KeyID  # 先删除私钥
 gpg --delete-keys KeyID         # 再删除公钥
 
-# 导出公钥/私钥
 # armor 参数表示将输出转换为 ASCII 格式码显示
-gpg --armor --export KeyID
-gpg --armor --export KeyID --output public-key.txt
-gpg --armor --export-secret-keys KeyID
-gpg --armor --export-secret-keys KeyID --output secret-key.txt
+gpg --armor --export KeyID # 导出公钥
+gpg --armor --export KeyID --output PublicKey.asc # 导出公钥
+gpg --armor --export-secret-keys KeyID # 导出私钥
+gpg --armor --export-secret-keys KeyID --output SecretKey.asc # 导出私钥
 
-# 导入公钥/私钥
-gpg --import public-key.txt
-gpg --import secret-key.txt
+gpg --export-ownertrust --armor # 导出信任数据库
+gpg --export-ownertrust --armor > ./TrustedGpgDb.asc # 导出信任数据库
+
+# 导入公钥/私钥/信任数据库
+gpg --import path/to/PublicKey.asc # 导入公钥
+gpg --import path/to/SecretKey.asc # 导入私钥
+gpg --import-ownertrust TrustedGpgDb.asc # 导入信任数据库
+
+# GPG信任数据库(位置~/.gnupg/trustdb.gpg)
+# => 手动修改导入密钥信任等级(导入的密钥不会自动添加到信任数据库中)
+gpg --edit-key charlie-wong@outlook.com
+gpg> help # 显示帮助信息
+....
+gpg> trust
+....
+gpg> save
+
+# GPG默认密钥是私钥列表中显示的第一个密钥，
+# 即 gpg --list-secret-keys 输出显示的第一个
+# 参数：--local-user KeyID 或 --default-key KeyID 指定使用的密钥，仅当前命令有效
+# 配置：创建 ~/.gnupg/gpg.conf 文件，内容 default-key KeyID，设置默认使用的密钥
+# NOTE 仅仅有一个 GPG 密钥时不需要此操作！
 
 # 公钥加密/私钥解密，私钥加密/公钥解密
 # -o, --output   -r, --recipient
@@ -39,11 +59,46 @@ gpg --sign demo.txt # 二进制签名文件, 当前目录生成 demo.txt.gpg
 gpg --clearsign demo.txt # ASCII码签名文件, 当前目录生成 demo.txt.asc
 gpg --detach-sign demo.txt # 生成单独签名文件, 当前目录生成 demo.txt.sig
 gpg --armor --detach-sign demo.txt # 生成单独签名文件, ASCII 码签
-gpg --verify demo.txt.asc demo.txt # 验证文件签名
+
+gpg --list-signatures # 查看签名
+gpg --check-signatures # 检查签名
+gpg --verify SignFile.sig OrigFile # 验证文件签名
+
+# GPG公共服务地址
+# => 密钥服务器(推荐主要) https://keys.openpgp.org/       Enigmail(Thunderbird)默认密钥服务器
+# => 密钥服务器(推荐次要) https://keyserver.ubuntu.com/   Kleopatra(Gpg4win)默认密钥服务器
 
 # 上传公钥到指定公钥服务器
-gpg --send-keys KeyID --keyserver https://keys.openpgp.org
-gpg --send-keys KeyID --keyserver https://keyserver.ubuntu.com
+gpg --keyserver keyserver.ubuntu.com --search-keys [KeyID]       # 在服务器搜索密钥
+gpg --keyserver keyserver.ubuntu.com --receive-keys [KeyID]      # 从服务器导入公钥
+gpg --keyserver https://keys.openpgp.org     --send-keys [KeyID] # 发送公钥到服务器
+gpg --keyserver https://keyserver.ubuntu.com --send-keys [KeyID] # 发送公钥到服务器
+
+# 示例说明
+gpg --fingerprint
+  pub   rsa2048 2017-06-09 [SC]
+        72A5 E38B EE74 C9D9 3DC7  CD94 6179 3E10 8135 F214
+  uid           [ unknown] charlie-wong <charlie-wong@foxmail.com>
+  uid           [ unknown] charlie-wong <1213charlie@gmail.com>
+  uid           [ unknown] charlie-wong <1213charlie@163.com>
+  sub   rsa2048 2017-06-09 [E]
+# KeyID => 邮箱/数字指纹(8135 F214)，数字指纹使用时不带中间的空格
+
+# => GPG手册         https://linux.die.net/man/1/gpg
+# => Gpg4win工具     https://www.gpg4win.org/index.html
+# => GNUPG用户手册   https://www.gnupg.org/documentation/manpage.html
+# => GPG入门教程     http://www.ruanyifeng.com/blog/2013/07/gpg.html
+
+# => usr[/local]/lib/gnupg           Default location for extensions
+#
+# => ~/.gnupg/secring.gpg            The secret keyring in binary format(can has many keys)
+# => ~/.gnupg/secring.gpg.lock       The lock file for secret keyring
+# => ~/.gnupg/pubring.gpg            The public keyring in binary format(can has many keys)
+# => ~/.gnupg/pubring.gpg.lock       The lock file for public keyring
+# => ~/.gnupg/trustdb.gpg            The trust database in binary format(can has many keys)
+# => ~/.gnupg/trustdb.gpg.lock       The lock file for trust database
+# => ~/.gnupg/options                May contain options
+# => ~/.gnupg/random_seed            Used to preserve the internal random pool
 
 ############
 # Also See #

@@ -1,0 +1,20 @@
+---
+tags: [ faq ]
+---
+# 若以 Root 身份执命令 xxx 时报错 sudo: xxx: command not found，
+# 而以普通用户身份则可以正常执行，则大概率是 PATH 设置不同导致的
+#
+# 显示以普通用户身份执行命令时 PATH 值
+env | grep PATH
+# 显示以 Root 身份执行命令时 PATH 值
+sudo env | grep PATH
+#
+# 解决办法
+# 方式一： 修改 /etc/sudoers 文件的 secure_path 变量的设置
+# 方式二： 修改 .bashrc，添加 alias sudo='sudo env PATH=$PATH'
+#          然后终端中执行 $ source ~/.bashrc 或重启终端
+
+############
+# Also See #
+############
+cheat -t faq

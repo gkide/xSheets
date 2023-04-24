@@ -1,0 +1,37 @@
+---
+tags: [ faq ]
+---
+# ☛ Ubuntu 不改名隐藏文件夹
+#
+# 目标：隐藏 ~/snap, ~/Public, ~/Templates, ~/Videos
+# 方式：创建 ~/.hidden 文件，其内容如下
+# snap
+# Public
+# Templates
+# Videos
+#
+# 这种隐藏文件的方式仅对 GUI 文件管理器有效，终端命令 ls 依然会显示这些文件
+# 常见的 GUI 文件管理器有 Nemo, Thunar, Dolphin(KUbuntu), Nautilus(Gnome)
+#
+# 参考链接：https://itsfoss.com/hide-files-folders-linux/
+
+# ☛ Linux 系统信息查询
+#
+# 查询系统包管理器
+for i in $( echo rpm dpkg apt pacman ); do which $i; done 2> /dev/null
+# 显示计算机名/机器ID/系统版本/内核版本/制造商/机器型号
+hostnamectl
+# How to check Linux System Version
+cat /etc/centos-releas    # CentOS
+cat /etc/redhat-release   # Redhat
+cat /etc/fedora-release   # Fedora
+cat /etc/issue            # Debian/Ubuntu/LinuxMint
+# How to check System Architecture and Linux Kernel Version
+uname -a
+# How to check CPU Architecture
+lscpu
+
+############
+# Also See #
+############
+cheat -t faq

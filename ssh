@@ -1,0 +1,22 @@
+---
+tags: [ developer ]
+---
+# ☛ Linux安装SSH客户端及服务端
+
+# 查看 SSH 后台服务
+# - ssh-agent => ssh-client
+# - sshd      => ssh-server
+ps -e | grep ssh
+
+# 判断是否已安装了 ssh-server 服务
+ssh localhost
+# 如果没有安装会显示：
+# ssh: connect to host localhost port 22: Connection refused
+
+# 安装 ssh-server
+sudo apt-get install openssh-server
+
+############
+# Also See #
+############
+cheat -t developer

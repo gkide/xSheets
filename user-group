@@ -1,0 +1,66 @@
+---
+tags: [ system info, system management ]
+---
+who               # 查看当前登录用户名
+whois             # 查看当前登录用户名
+whoami            # 查看当前登录用户名
+groups            # 查看当前登录用户的组内成员
+groups UserName   # 查看 UserName 用户所在的组
+
+/etc/group        # 系统的所有组，用户组配置文件
+/etc/gshadow      # 系统的所有组，用户组配置文件的影子口令文件
+
+/etc/passwd       # 系统的所有用户名，用户配置文件
+/etc/shadow       # 系统的所有用户名，用户配置文件的影子口令文件
+
+# => /etc/group 文件格式
+# group-name:passwd:GID:user-list
+# group-name      用户组名称
+# passwd          用户组密码
+# GID
+# user-list       组内用户列表，逗号分割，为空时表示组内用户名是 GID 对应的用户名
+
+# 用户管理命令
+adduser, useradd    # 添加用户
+passwd              # 设置用户密码
+usermod             # 修改用户命令，可以通过 usermod 来修改登录名、用户的家目录等等
+pwck                # 校验用户配置文件 /etc/passwd 和 /etc/shadow 文件内容的完整性
+pwconv              # 同步用户从 /etc/passwd 到 /etc/shadow
+pwunconv            # pwconv 的立逆向操作，是从 /etc/shadow 和 /etc/passwd 创建 /etc/passwd ，然后会删除 /etc/shadow 文件
+finger              # 查看用户信息，Ubuntu 非默认安装，手动安装命令 $ sudo apt install finger
+id                  # 查看用户的 UID、GID 及所归属的用户组
+chfn                # 更改用户信息
+su                  # 用户切换
+sudo, sudoedit      # 暂时通过另一个用户或 Root 用户来执行命令
+visudo              # 编辑 /etc/sudoers 文件的命令，也可以不用这个命令，直接编辑 /etc/sudoers 文件
+
+
+# 用户组管理命令
+addgroup, groupadd  # 添加用户组
+delgroup, groupdel  # 删除用户组
+groupmod            # 修改用户组信息
+groups              # 显示用户所属的用户组
+grpck               # 通过 /etc/group 和 /etc/gshadow 文件内容的完整性
+grpconv, grpunconv  # 通过 /etc/group 和 /etc/gshadow 文件内容来同步或创建 /etc/group ，然后删除 gshadow 文件
+
+
+# 关于 /etc/skel 目录
+# 该目录一般是存放用户启动文件的目录，这个目录是由 root 权限控制，当我们添加用户时，
+# 这个目录下的文件自动复制到新添加的用户的家目录下，该目录下的文件都是隐藏文件，即 .file 格式，
+# 可通过修改、添加、删除 /etc/skel 目录下的文件，来提供一个统一的、标准的、默认的用户环境
+#
+# 一般是用 useradd 或 adduser 命令添加用户时，系统自动复制 /etc/skel 目录下的文件到新添加用户的 HOME 录，
+# 如果通过修改 /etc/passwd 来添加用户时，则可以自己创建用户的家目录，然后再把 /etc/skel 下的文件复制到用户
+# 的家目录下，最后再用 chown 来改变新用户家目录的权限属性
+
+# 关于 /etc/login.defs 配置文件
+# 该文件是当创建用户时的一些规划，比如创建用户时，是否需要家目录，UID和GID的范围；用户的期限等等
+
+# 关于 /etc/default/useradd 文件
+# 通过 useradd 或 adduser 命令添加用户时的规则文件
+
+############
+# Also See #
+############
+cheat -t 'system info'
+cheat -t 'system management'

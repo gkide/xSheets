@@ -31,6 +31,22 @@ uname -a
 # How to check CPU Architecture
 lscpu
 
+# ☛ Linux ALSA 系统
+#
+# ALSA - Advanced Linux Sound Architecture
+# => [1] https://wiki.archlinux.org/title/PC_speaker
+# => [2] https://wiki.archlinux.org/title/Advanced_Linux_Sound_Architecture
+#
+# Install the 'alsa-utils' package. It contains
+# - amixer          a shell command to change audio settings
+# - alsamixer       a more intuitive ncurses based interface for audio device configuration
+# - speaker-test    ALSA 的声卡/音响测试命令
+# - aplay           ALSA 声卡驱动的声音录制/播放命令
+#
+# 显示所有可用的声卡设备，一个声卡设备可能有多种驱动模式:
+# 模拟(analog)信号模式，数字(digital)信号模式，HDMI信号模式
+sudo aplay -L
+
 ############
 # Also See #
 ############

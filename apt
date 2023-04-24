@@ -45,6 +45,13 @@ sudo add-apt-repository -r ppa:user/ppa-name # 删除 PPA 源
 删除 /etc/apt/sources.list.d 目录相应的 ppa 文件
 sudo apt-get update # 添加或删除 ppa 后更新
 
+# 包依赖关系查看
+apt show PackageName                # 显示软件包 <PackageName> 的相关信
+apt-cache depends PackageName       # 显示软件包 <PackageName> 依赖的包
+dpkg --info path/to/PackageName.deb # 查看 dep 安装包的依赖
+sudo apt install apt-rdepends       # 第三方查看依赖关系的工具
+apt-rdepends PackageName            # 第三方查看依赖关系的工具
+
 ############
 # Also See #
 ############

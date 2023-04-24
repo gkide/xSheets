@@ -4,7 +4,27 @@ tags: [ package management, ubuntu, kubuntu ]
 # 显示所有已经安装的软件包列表
 dpkg --get-selections
 
+# 命令会列出系统中所有已安装的软件包，组合 grep 滤出输出内容
+# - 输出第一列： 三个字母格式   <期望状态>  <当前状态>  <错误标识>
+#   <期望状态>  未知(u)   安装(i)   删除(r)    清除(p)     保持(h)
+#   <当前状态>  未安装(n) 已安装(i) 仅存配置(c) 仅解压缩(U)  配置失败(F)  不完全安装(H)  触发器等待(W)  触发器未决(T)
+#   <错误标识>  需重装(R)
+#   ii  表示<期望安装>并且<已经安装>
+#   rc  表示<已经删除>并且<仅存配置>
+# - 输出第二列：软件包名称
+# - 输出第三列：软件包版本号
+# - 输出第四列：软件包支持的体系结构
+# - 输出第五列：软件描述信息
+dpkg -l
+
+# 显示所有已经删除但保留配置的软件包
+dpkg -l | grep '^rc' | awk '{print $2}'
+
+# 显示所有已经删除但保留配置的软件包，然后将保留的配置删除
+dpkg -l | grep '^rc' | awk '{print $2}' | sudo xargs dpkg --purge
+
+
 ############
 # Also See #
 ############
-cheat -t package management
+cheat -t 'package management'

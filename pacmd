@@ -1,0 +1,14 @@
+---
+tags: [ driver, sound ]
+---
+# 显示使用说明
+pacmd --help
+
+# 显示声卡设备信息
+pacmd list cards | grep -i "output|active"
+
+############
+# Also See #
+############
+cheat -t driver
+cheat -t sound

@@ -37,6 +37,16 @@ git send-email \
 --subject='[RFC PATCH 0/2] mm: git send-email Test' \
 ./outgoing/*
 
+# 设置分支的 upstream
+git branch --set-upstream-to=origin/master master
+
+git stash # 将所有未提交的修改保存至堆栈中，后续恢复当前工作目录
+git stash list # 查看当前stash中的内容
+git stash pop # 弹出 stash 中的内容并应用到当前分支，先进后出
+git stash apply # 将堆栈中的内容应用到当前目录，不会将内容从堆栈中删除
+git stash drop + 名称 # 从堆栈中移除某个指定的stash
+git stash clear # 清除堆栈中的所有内容
+
 ############
 # Also See #
 ############

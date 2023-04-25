@@ -1,0 +1,25 @@
+---
+tags: [ developer ]
+---
+# GET 请求，显示响应内容
+curl https://www.example.com
+
+# GET 请求，显示响应内容，显示交互细节详情
+curl -v https://www.example.com
+
+# 设置 Cookie: foo=bar
+curl -b "foo=bar" https://google.com
+
+# 将服务器设置的 Cookie 写入文件
+curl -c cookies.txt https://www.google.com
+
+# 设置 HTTP 的标头 Referer，表示请求的来源
+curl -e "https://www.baidu.com" https://www.example.com
+
+# -A "XXX"  设置 User-Agent 为 XXX
+# -H "..."  手动指定　HTTP/HTTPS　请求的头部
+
+############
+# Also See #
+############
+cheat -t developer

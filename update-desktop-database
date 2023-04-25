@@ -1,0 +1,11 @@
+---
+tags: [ template ]
+---
+
+# This is xSheets template
+update-desktop-database $HOME/.local/share/applications/
+
+############
+# Also See #
+############
+cheat -t template

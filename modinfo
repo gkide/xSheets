@@ -1,0 +1,10 @@
+---
+tags: [ kernel ]
+---
+# Show information about a Linux Kernel module
+modinfo ntfs3 # info about 'ntfs3' kernel module
+
+############
+# Also See #
+############
+cheat -t kernel

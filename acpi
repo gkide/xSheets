@@ -4,7 +4,6 @@ tags: [ kernel, system, battery ]
 # ACPI is short of Advanced Configuration and Power Interface
 # Displays information from the /proc or the /sys filesystem
 # - https://wiki.archlinux.org/title/ACPI_modules
-# -
 
 # List the enabled ACPI modules for your running kernel
 # A small pice of ACPI kernel modules

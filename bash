@@ -7,6 +7,7 @@ tags: [ bash ]
 # The B1, B2, B3 means it executes only the first of those files found.
 # (A) or (B3) means it is normally sourced by (read by and included in)
 # the primary file, in this case A or B3.
+#
 # +-----------------------------------+-----------+-----------+------+
 # |                                   |Interactive|Interactive|Script|
 # |                                   |   Login   | Non-Login |      |
@@ -38,8 +39,12 @@ tags: [ bash ]
 # | ~/.bash_logout     (bash only)    |    C      |           |      |
 # +-----------------------------------+-----------+-----------+------+
 #
-# https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html
-#
+# https://www.gnu.org/software/bash/manual/bash.html#Bash-Startup-Files
+# BASH_ENV is only used for non-interactive bash, which is script,
+# its value is expanded and used as the name of a startup file to
+# read before executing the script.
+# https://www.gnu.org/software/bash/manual/bash.html#index-BASH_005fENV
+
 # http://meta.ath0.com/2007/10/23/cleaning-up-bash-customizations/
 # https://superuser.com/questions/183870/difference-between-bashrc-and-bash-profile
 

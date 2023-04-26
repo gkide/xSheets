@@ -1,0 +1,17 @@
+---
+tags: [ developer, system ]
+---
+# GRUB 手册
+# https://www.gnu.org/software/grub/manual/grub/grub.html#Configuration
+
+# GRUB 模板配置文件
+cat /etc/default/grub
+
+# GRUB 配置文件选项说明文档
+info -f grub -n 'Simple configuration'
+
+############
+# Also See #
+############
+cheat -t system
+cheat -t developer

@@ -1,0 +1,19 @@
+---
+tags: [ kernel, todo ]
+---
+# ACPICA tools for the development and debug of ACPI tables
+apt show acpica-tools # show package info
+sudo apt install acpica-tools # install package
+
+# acpidump > tables.dump
+# acpixtract -a tables.dump
+# iasl -d *.dat
+# grep ETMD *.dsl
+#
+# https://bugzilla.kernel.org/show_bug.cgi?id=204503
+# https://community.frame.work/t/bios-bug-tz-etmd-missing-in-acpi-tables/17653
+
+############
+# Also See #
+############
+cheat -t kernel

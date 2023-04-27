@@ -1,8 +1,42 @@
 ---
 tags: [ system ]
 ---
-systemctl list-units # List units that systemd currently has in memory
-systemctl list-unit-files # To show all installed unit files
+# https://wiki.archlinux.org/title/Systemd
+
+# Analyzing the system state
+systemctl status          # Show system status
+systemctl                 # List running units currently has in memory
+systemctl list-units      # List running units currently has in memory
+systemctl --failed        # List failed units
+systemctl list-unit-files # List installed unit files
+systemctl status PID      # Show process status for a PID
+
+# Checking the unit status
+systemctl help       UNIT # Show a manual page associated with a unit
+systemctl status     UNIT # Status of a unit, including whether it is running or not
+systemctl is-enabled UNIT # Check whether a unit is enabled
+
+# Starting, restarting, reloading a unit
+sudo systemctl start   UNIT   # Start a unit immediately
+sudo systemctl stop    UNIT   # Stop a unit immediately
+sudo systemctl restart UNIT   # Restart a unit
+sudo systemctl reload  UNIT   # Reload a unit and its configuration
+sudo systemctl daemon-reload  # Reload systemd manager configuration, scan for new or changed units
+
+# Enabling a unit
+sudo systemctl enable       UNIT # Enable a unit to start automatically at boot
+sudo systemctl enable --now UNIT # Enable a unit to start automatically at boot and start it immediately
+sudo systemctl disable      UNIT # Disable a unit to no longer start at boot
+sudo systemctl reenable     UNIT # Reenable a unit, i.e. disable and enable anew
+
+# Masking a unit
+sudo systemctl unmask UNIT # Unmask a unit
+sudo systemctl mask UNIT   # Mask a unit to make it impossible to start4
+
+systemctl status bluetooth        # 蓝牙服务状态
+sudo systemctl disable bluetooth  # 停止蓝牙服务
+sudo systemctl enable bluetooth   # 启用蓝牙服务
+sudo systemctl restart bluetooth  # 重启蓝牙服务
 
 ############
 # Also See #

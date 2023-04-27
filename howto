@@ -1,0 +1,55 @@
+---
+tags: [ faq, howto ]
+---
+# ☛ Ubuntu Backlight
+
+# Reporting Backlight Bugs for Ubuntu
+# => https://wiki.ubuntu.com/Kernel/Debugging/Backlight
+
+# 查看内核启动参数
+cat /proc/cmdline
+
+# => https://www.kernel.org/doc/html/latest/gpu/backlight.html
+# => https://www.kernel.org/doc/Documentation/ABI/stable/sysfs-class-backlight
+# ACPI backlight driver 设备文件
+#    bl_power           Control BACKLIGHT power, 0=power on, 4=power off
+#    actual_brightness  RO, Show the actual brightness by querying the hardware
+#    max_brightness     RO, Maximum brightness for this <backlight>
+#    brightness         R/W, Control the brightness for this <backlight>
+#                       Values are between 0 and max_brightness
+#    type               The type of interface controlled by this <backlight>
+#                       firmware  The driver uses a standard firmware interface
+#                       platform  The driver uses a platform-specific interface
+#                       raw       The driver controls hardware registers directly
+#
+# NOTE actual_brightness, max_brightness, brightness
+#      use index number instead of percentage levels
+#
+# Lenovo Legion Y9000P <- 国内型号 = 海外型号 -> Legion 5i Pro
+ls /sys/class/backlight/ # UEFI BIOS 显卡模式动态切换
+# => intel_backlight  集成显卡 ACPI 系统设备接口文件
+# => nvidia_0         独立显卡 ACPI 系统设备接口文件
+#
+# NOTE For laptops which have multiple video cards and the backlight
+#      restoration fails. Try masking one instance of the systemd service
+# => https://wiki.archlinux.org/title/Backlight
+sudo systemctl mask UNIT   # Mask a unit to make it impossible to start
+sudo systemctl unmask UNIT # Unmask a unit to make it start at boot
+
+# 禁用 Nvidia 背光保存/恢复服务，仅启用(默认启用) Intel 的背光保存/恢复服务
+sudo systemctl mask systemd-backlight@backlight:nvidia_0.service
+
+systemctl status systemd-backlight@backlight:nvidia_0.service            # 查看服务状态
+systemctl status systemd-backlight@backlight:intel_backlight.service     # 查看服务状态
+systemctl is-enabled systemd-backlight@backlight:nvidia_0.service        # 查看服务是否启用
+systemctl is-enabled systemd-backlight@backlight:intel_backlight.service # 查看服务是否启用
+
+# Differentiated System Description Table (DSDT)
+# => https://wiki.ubuntu.com/BIOSandUbuntu#Buggy%20DSDT
+cheat acpidump # ALSO SEE
+
+############
+# Also See #
+############
+cheat -t faq
+cheat -t howto

@@ -4,6 +4,10 @@ tags: [ package management ]
 # Managing updates
 # https://forum.snapcraft.io/t/managing-updates/7022
 
+# Change the channel a package tracks for updates
+# '$ snap info AppName' gives some other channel which can be used here as ChannelName
+snap refresh AppName --channel=ChannelName
+
 # Show the last refresh time and the next scheduled refresh time
 snap refresh --time
 

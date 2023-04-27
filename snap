@@ -2,10 +2,10 @@
 tags: [ package management ]
 ---
 # Print the version of snap client, snapd daemon, snap series number, os and kernel:
-snap version
+snap version # 显示 snap 版本相关信息
 
 # To find available packages form the snap store
-snap find AppName
+snap find AppName # 搜索软件包 AppName
 
 # Displays a summary of snaps installed in the current system
 #
@@ -25,27 +25,24 @@ snap find AppName
 #                 a green check mark beside the name of the publisher. If it can’t show a check mark,
 #                 you’ll see an asterisk (*).
 #  Notes       Any comments or additional information will appear here.
-snap list
-snap list --all # Show all revisions
+snap list # 显示已经安装的软件包
+snap list --all # 显示已经安装的软件包的所有版本
 
 # You can use the info option to get a description of a snap package
-snap info AppName # Shows up the detail info of a snap package
+snap info AppName # 显示 AppName 软件包的描述信息
 
 # Update the installled snaps Apps
+cheat snap-refresh # More details
 snap refresh --list # Show the new versions of snaps that would be updated with the next refresh
 sudo snap refresh # Update all installed snaps apps in system
 sudo snap refresh AppName # Check and update AppName package
-sudo snap refresh AppName --channel=ChannelName # Change the channel a package tracks for updates
-                                                # '$ snap info AppName' gives some other channel
-                                                # which can be used here as ChannelName
-cheat snap-refresh # for more details
-
-# To uninstall and remove snap package
-sudo snap remove AppName                          # Remove AppName instance from the system
-sudo snap remove AppName --revision=RevisionName  # Remove only the given revision
 
 # To install snap packages
 sudo snap install AppName
+
+# To uninstall and remove snap package
+sudo snap remove AppName # Remove AppName instance from the system
+sudo snap remove AppName --revision=RevisionName # Remove only the given revision
 
 # Contains ssnap retains packages cached files, like /var/cache/apt/archives/*
 /var/lib/snapd/snaps/*

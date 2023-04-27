@@ -1,0 +1,16 @@
+---
+tags: [ system, kernel ]
+---
+# 内核实时更新，主要面向服务器等需要长期保持运行的机器，个人桌面电脑通常帮助不大！
+
+# KUbuntu 系统默认安装
+sudo snap install canonical-livepatch
+
+# 卸载删除
+sudo snap remove canonical-livepatch
+
+############
+# Also See #
+############
+cheat -t kernel
+cheat -t system

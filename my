@@ -5,16 +5,3 @@ tags: [ my ]
 file FileName # 查看文件编码
 file -bi FileName # 查看文件编码
 encguess FileName # 查看文件编码
-
-# 软件包管理系统(snap)
-snap version # 显示 snap 版本信息
-snap find AppName # 搜索软件包 AppName
-snap list # 显示已经安装的软件包
-snap list --all # 显示已经安装的软件包(所有版本)
-snap info AppName # 显示 AppName 的描述信息
-
-snap refresh --list # 显示已经安装软件包的新版本
-sudo snap refresh # 更新系统中已经安装的所有软件包
-sudo snap refresh AppName # 更新 AppName 软件包
-sudo snap remove AppName # 卸载 AppName 软件包
-sudo snap install AppName # 安装 AppName 软件包

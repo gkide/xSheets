@@ -1,15 +1,44 @@
 ---
 tags: [ kernel ]
 ---
-
-# -p, --priority=FROM..TO
 # Filter output by log levels message priorities or priority ranges.
 # Takes either a single numeric or textual log level, a range of numeric/text log levels in the form FROM..TO.
-# => "emerg" (0), "alert" (1), "crit" (2), "err" (3), "warning" (4), "notice" (5), "info" (6), "debug" (7).
-journalctl -p err..alert
+#
+# emerg     0   system is unusable
+# alert     1   action must be taken immediately
+# crit      2   critical conditions
+# err       3   error conditions
+# warning   4   warning conditions
+# notice    5   normal but significant condition
+# info      6   informational
+# debug     7   debug-level messages
+#
+journalctl -p alert..err      # Show log msg [1, 3]
+journalctl -p warning         # Show log msg <= 4
+cheat dmesg # Also See
 
-# 清空 /var/log/journal/*/*.journal 文件
+# Check out the current disk usage of all journal files
+# ls -l --block-size=M /var/log/journal/*/
+journalctl --disk-usage
+
+# 删除 /var/log/journal/*/*.journal 文件
+sudo journalctl --rotate # marked as archived, are never written to in future
+# Delete all archived journal files contain no data older than the specified timespan
+sudo journalctl --vacuum-time=1s   # s, m, h, days, months, weeks, years
+# Delete log files until the disk space taken falls below the specified size
+sudo journalctl --vacuum-size=100M # K, M, G, T
+# No more than the specified number of separate journal files remain
+sudo journalctl --vacuum-files=5   # Delete old logs and limit file number to 5 files
+
+# 结合在一起使用
 sudo journalctl --rotate --vacuum-time=1s
+
+# Edit the configuration file to limit the journal log disk usage, like 100M
+# => SystemMaxUse=512M    How much disk space the journal may use up at most
+cat /etc/systemd/journald.conf
+sudo nvim /etc/systemd/journald.conf
+# Save the file and reload systemd daemon
+systemctl daemon-reload
 
 ############
 # Also See #

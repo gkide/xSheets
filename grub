@@ -3,12 +3,54 @@ tags: [ developer, system ]
 ---
 # GRUB 手册
 # https://www.gnu.org/software/grub/manual/grub/grub.html#Configuration
+# Kernel Parameters
+# https://www.kernel.org/doc/Documentation/admin-guide/kernel-parameters.txt
 
 # GRUB 模板配置文件
 cat /etc/default/grub
 
+# Kernel boot arguments
+cat /proc/cmdline
+
 # GRUB 配置文件选项说明文档
 info -f grub -n 'Simple configuration'
+
+# 修改内核启动参数
+# BIOS's usually disable functionality if Windows is not detected, and
+# by default the kernel responds false when asked if Linux is running,
+# acpi_osi=linux          Tells the kernel to respond true
+#
+# acpi_backlight=vendor   prefer vendor-specific driver insteadof the ACPI video.ko driver
+# acpi_backlight=video    use the ACPI video.ko driver
+# acpi_backlight=native   use the device's native backlight mode
+# acpi_backlight=none     disable the ACPI backlight interface
+#
+# loglevel=               All Kernel Messages with a loglevel smaller than the
+#                         console loglevel will be printed to the console. It
+#                         can also be changed with klogd or other programs.
+#                         The loglevels are defined as follows:
+#       0 (KERN_EMERG)    system is unusable
+#       1 (KERN_ALERT)    action must be taken immediately
+#       2 (KERN_CRIT)     critical conditions
+#       3 (KERN_ERR)      error conditions
+#       4 (KERN_WARNING)  warning conditions
+#       5 (KERN_NOTICE)   normal but significant condition
+#       6 (KERN_INFO)     informational
+#       7 (KERN_DEBUG)    debug-level messages
+#
+# ignore_loglevel         Ignore loglevel setting, it will print /all/ kernel messages to the
+#                         console. Useful for debugging. Without this option, only kernel messages
+#                         with loglevel smaller than the loglevel specified by the first value in
+#                         /proc/sys/kernel/printk will be sent to consoles
+#                         -> ? /sys/module/printk/parameters/ignore_loglevel
+# NOTE Use ignore_loglevel option make bootup procedure becomes slow
+# => https://akari.osdn.jp/capturing-kernel-messages.html
+#
+# https://www.kernel.org/doc/Documentation/admin-guide/kernel-parameters.txt
+cat /etc/default/grub
+# => GRUB_CMDLINE_LINUX_DEFAULT="quiet splash" # KUbuntu 默认内核参数
+# => GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_backlight=... acpi_osi=... loglevel=..."
+sudo update-grub
 
 ############
 # Also See #

@@ -4,6 +4,20 @@ tags: [ kernel ]
 # 显示 Linux 内核的缓存信息
 sudo dmesg | grep -i WHAT
 
+# emerg     0   system is unusable
+# alert     1   action must be taken immediately
+# crit      2   critical conditions
+# err       3   error conditions
+# warn      4   warning conditions
+# notice    5   normal but significant condition
+# info      6   informational
+# debug     7   debug-level messages
+#
+# -l, --level <list> restrict output to defined levels
+sudo dmesg -l err # Show error messages only
+sudo dmesg --level=err,warn # Show error and warning messages only
+cheat journalctl # Also See
+
 ############
 # Also See #
 ############

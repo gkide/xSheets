@@ -1,9 +1,12 @@
 ---
 tags: [ kernel, system, battery ]
 ---
+# ACPI Documentation
+# => https://www.acpica.org/documentation/
+
 # ACPI is short of Advanced Configuration and Power Interface
 # Displays information from the /proc or the /sys filesystem
-# - https://wiki.archlinux.org/title/ACPI_modules
+# => https://wiki.archlinux.org/title/ACPI_modules
 
 # List the enabled ACPI modules for your running kernel
 # A small pice of ACPI kernel modules
@@ -34,6 +37,22 @@ acpi -b
 
 # System Power Related
 ls /sys/class/power_supply
+
+# Screen Brightness and Backlight
+# => https://wiki.archlinux.org/title/Backlight
+# => https://www.kernel.org/doc/html/latest/gpu/backlight.html
+# => https://www.kernel.org/doc/Documentation/ABI/stable/sysfs-class-backlight
+#    bl_power           Control BACKLIGHT power, 0=power on, 4=power off
+#    actual_brightness  RO, Show the actual brightness by querying the hardware
+#    max_brightness     RO, Maximum brightness for this <backlight>
+#    brightness         R/W, Control the brightness for this <backlight>
+#                       Values are between 0 and max_brightness
+#    type               The type of interface controlled by this <backlight>
+#                       firmware  The driver uses a standard firmware interface
+#                       platform  The driver uses a platform-specific interface
+#                       raw       The driver controls hardware registers directly
+# Hardware interface for screen backlight brightness
+ls /sys/class/backlight/
 
 ############
 # Also See #

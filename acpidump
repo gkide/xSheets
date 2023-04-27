@@ -2,15 +2,37 @@
 tags: [ kernel, todo ]
 ---
 # ACPICA tools for the development and debug of ACPI tables
-apt show acpica-tools # show package info
-sudo apt install acpica-tools # install package
+apt show acpica-tools # 显示安装包信息
+apt-file list acpica-tools # 显示安装包内包含的文件列表
+sudo apt install acpica-tools # 安装软件包
 
-# acpidump > tables.dump
-# acpixtract -a tables.dump
-# iasl -d *.dat
-# grep ETMD *.dsl
-#
-# https://bugzilla.kernel.org/show_bug.cgi?id=204503
+# Differentiated System Description Table (DSDT)
+# => https://wiki.ubuntu.com/BIOSandUbuntu#Buggy%20DSDT
+# ACPI Documentation
+# => https://www.acpica.org/documentation/
+
+sudo acpidump -o acpidump.txt # Dump ACPI tables data
+acpixtract    acpidump.txt    # Just extract DSDT/SSDT tables, not all
+acpixtract -a acpidump.txt    # Extract all tables, not just DSDT/SSDT
+acpixtract -l acpidump.txt    # List table summaries, do not extract
+# ASL -> human readable ACPI Source Language
+# AML -> executable binary ACPI Machine Language
+iasl -d *.dat # Disassemble AML to ASL source code file
+grep ETMD *.dsl
+
+journalctl -p err
+# => pci 0000:00:07.0: DPC: RP PIO log size 0 is invalid
+# https://bugzilla.kernel.org/show_bug.cgi?id=209943
+
+sudo dmesg -l err,warn
+# => [    7.489720] ACPI BIOS Error (bug): Could not resolve symbol [\_TZ.ETMD], AE_NOT_FOUND (20220331/psargs-330)
+# => [    7.489728] No Local Variables are initialized for Method [_OSC]
+# => [    7.489729] Initialized Arguments for Method [_OSC]:  (4 arguments defined for method invocation)
+# => [    7.489729]   Arg0:   00000000255aaf01 <Obj>           Buffer(16) 5D A8 3B B2 B7 C8 42 35
+# => [    7.489735]   Arg1:   00000000c33d7953 <Obj>           Integer 0000000000000001
+# => [    7.489737]   Arg2:   00000000b8360812 <Obj>           Integer 0000000000000002
+# => [    7.489739]   Arg3:   00000000adb68635 <Obj>           Buffer(8) 00 00 00 00 05 00 00 00
+# => [    7.489743] ACPI Error: Aborting method \_SB.IETM._OSC due to previous error (AE_NOT_FOUND) (20220331/psparse-529)
 # https://community.frame.work/t/bios-bug-tz-etmd-missing-in-acpi-tables/17653
 
 ############

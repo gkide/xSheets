@@ -1,0 +1,12 @@
+---
+tags: [ kernel, driver, system ]
+---
+# Show list of all running units, ordered by the time they took to initialize
+systemd-analyze blame
+
+############
+# Also See #
+############
+cheat -t kernel
+cheat -t driver
+cheat -t system

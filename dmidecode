@@ -1,0 +1,40 @@
+---
+tags: [ hardware ]
+---
+# Dumping a computer's DMI (some say SMBIOS) table, which contents in a human-readable format.
+# The table contains a description of the system's hardware components, as well as other useful
+# pieces of information such as serial numbers and BIOS revision, etc.
+sudo dmidecode
+sudo dmidecode | grep -i ...
+
+sudo dmidecode -s bios-vendor               # LENOVO
+sudo dmidecode -s bios-version              # J2CN49WW
+sudo dmidecode -s bios-release-date         # 11/25/2022
+sudo dmidecode -s bios-revision             # 1.49
+sudo dmidecode -s firmware-revision         # 1.49
+sudo dmidecode -s system-manufacturer       # LENOVO
+sudo dmidecode -s system-product-name       # 82RF
+sudo dmidecode -s system-version            # Legion Y9000P IAH7H
+sudo dmidecode -s system-serial-number      # => baseboard-serial-number
+sudo dmidecode -s system-uuid               #
+sudo dmidecode -s system-sku-number         #
+sudo dmidecode -s system-family             # Legion Y9000P IAH7H
+sudo dmidecode -s baseboard-manufacturer    # LENOVO
+sudo dmidecode -s baseboard-product-name    # LNVNB161216
+sudo dmidecode -s baseboard-version         # SDK0T76479 WIN
+sudo dmidecode -s baseboard-serial-number   # => baseboard-serial-number
+sudo dmidecode -s baseboard-asset-tag
+sudo dmidecode -s chassis-manufacturer      # LENOVO
+sudo dmidecode -s chassis-type              # Notebook
+sudo dmidecode -s chassis-version           # Legion Y9000P IAH7H
+sudo dmidecode -s chassis-serial-number     # => baseboard-serial-number
+sudo dmidecode -s chassis-asset-tag
+sudo dmidecode -s processor-family          # Core i9
+sudo dmidecode -s processor-manufacturer    # Intel(R) Corporation
+sudo dmidecode -s processor-version         # 12th Gen Intel(R) Core(TM) i9-12900H
+sudo dmidecode -s processor-frequency       # 4257 MHz
+
+############
+# Also See #
+############
+cheat -t hardware

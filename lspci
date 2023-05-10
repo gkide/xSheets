@@ -9,6 +9,9 @@ $ sudo lspci -vv | grep -i audio
 # -k     Show kernel drivers handling each device and also kernel modules capable of handling it.
 #        Turned on by default when -v is given in the normal mode of output.
 
+# 0280 is the PCI class code for wireless PCI controllers in Ubuntu
+lspci -nnk | grep -A2 0280
+
 ############
 # Also See #
 ############

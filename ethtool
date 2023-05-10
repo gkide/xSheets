@@ -1,0 +1,12 @@
+---
+tags: [ wifi, driver, wireless ]
+---
+sudo apt install ethtool # 需要手动安装
+
+ip addr show # 显示系统网卡设备信息
+ethtool -i NetCardName # 显示指定网卡的驱动信息
+
+############
+# Also See #
+############
+cheat -t driver

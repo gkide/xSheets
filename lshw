@@ -1,0 +1,17 @@
+---
+tags: [ template ]
+---
+# Outputs the device tree showing hardware paths
+lshw -short
+
+# Outputs the device tree as an HTML page
+lshw -html > device-info.html # Open it by IE
+
+# Only show the given class of hardware.
+# class can be found using 'lshw -short' or 'lshw -businfo'.
+lshw -class network # 显示网络相关设备信息
+
+############
+# Also See #
+############
+cheat -t template

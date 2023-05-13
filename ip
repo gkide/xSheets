@@ -1,0 +1,26 @@
+---
+tags: [ networking ]
+---
+# https://linux.cn/article-3144-1.html
+
+sudo apt install iproute2 # 安装网络套件
+
+ip route show           # 显示路由表信息
+ip route help           # 显示 route 帮助信息
+
+ip addr show            # 显示所有网卡的信息
+ip addr show wlan0      # 显示指定网卡的信息
+
+ip -s link              # 显示所有网络接口的统计数据
+ip -s -s link ls p2p1   # 显示指定网络接口的统计数据
+
+sudo ip addr add 192.168.0.193/24 dev wlan0  # 设置IP地址
+sudo ip addr del 192.168.0.193/24 dev wlan0  # 删除IP地址
+
+# 地址解析协议(ARP)用于将一个IP地址转换成它对应的物理地址(即MAC地址)
+ip neigh       # 显示所在局域网设备的MAC地址
+ip neighbour   # 显示所在局域网设备的MAC地址
+
+# ip 命令的 up 和 down 选项来激某个特定的接口
+sudo ip link set xxx down  # 停用 xxx 网卡接口
+sudo ip link set xxx up    # 启用 xxx 网卡接口

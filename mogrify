@@ -1,0 +1,27 @@
+# https://imagemagick.org/script/mogrify.php
+
+# Resize all images starting with "DSC" to 800x600
+mogrify -resize {{800x600}} {{DSC*}}
+
+# Resize all JPEG images in the directory to 50% of their initial size
+mogrify -resize {{50%}} {{*.jpg}}
+# Resize all your JPEG images in a folder to a maximum dimension of 256x256
+mogrify -resize 256x256 *.jpg
+
+# Convert all PNG images in the directory to JPEG
+mogrify -format {{jpg}} {{*.png}}
+# Convert all our PNG images in a folder to the JPEG format
+mogrify -format jpg *.png
+
+# Halve the saturation of all image files in the current directory
+mogrify -modulate {{100,50}} {{*}}
+
+# Double the brightness of all image files in the current directory
+mogrify -modulate {{200}} {{*}}
+
+# -resize       设置大小
+# -format       指定格式
+# -background   指定背景颜色
+# -crop         裁剪图片
+mogrify -crop 256x256+47+47 *.png
+mogrify -format png -resize 350x350! -background none *.svg

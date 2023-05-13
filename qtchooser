@@ -1,0 +1,14 @@
+---
+tags: [ qt, gui ]
+---
+# 代码仓库
+https://code.qt.io/cgit/qtsdk/qtchooser.git
+
+qtchooser 的配置目录1：/usr/lib/x86_64-linux-gnu/qtchooser/
+qtchooser 的配置目录2: /usr/share/qtchooser/
+qtchooser 的配置目录3: ~/.config/qtchooser/
+
+qtchooser --help
+qtchooser --print-env
+qtchooser ---list-versions
+export QT_SELECT=<list-versions显示的值>

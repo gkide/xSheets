@@ -1,5 +1,5 @@
 ---
-tags: [ developer ]
+tags: [ development ]
 ---
 gpg --generate-key # 生成新的公钥/私钥
 gpg --full-generate-key # 生成新的公钥/私钥
@@ -103,4 +103,4 @@ gpg --fingerprint
 ############
 # Also See #
 ############
-cheat -t developer
+cheat -t development

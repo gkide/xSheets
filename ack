@@ -1,9 +1,9 @@
 ---
-tags: [ developer, todo ]
+tags: [ development, todo ]
 ---
 # https://beyondgrep.com/
 
 ############
 # Also See #
 ############
-cheat -t developer
+cheat -t development

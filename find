@@ -1,5 +1,5 @@
 ---
-tags: [ developer ]
+tags: [ development ]
 ---
 # The general syntax for the find command
 # => StarPoint        The location from where to start search. By default, the
@@ -151,4 +151,4 @@ find . ! -path "./A/*" -a ! -path "./B/*" -name "*.c"
 ############
 # Also See #
 ############
-cheat -t developer
+cheat -t development

@@ -1,5 +1,5 @@
 ---
-tags: [ developer ]
+tags: [ development ]
 ---
 # git 非正式补丁
 git diff > commit.patch                     # 已修改，未添加，未提交
@@ -50,4 +50,4 @@ git stash clear # 清除堆栈中的所有内容
 ############
 # Also See #
 ############
-cheat -t developer
+cheat -t development

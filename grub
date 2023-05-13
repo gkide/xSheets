@@ -1,5 +1,5 @@
 ---
-tags: [ developer, system ]
+tags: [ development, system ]
 ---
 # GRUB 手册
 # https://www.gnu.org/software/grub/manual/grub/grub.html#Configuration
@@ -56,4 +56,4 @@ sudo update-grub
 # Also See #
 ############
 cheat -t system
-cheat -t developer
+cheat -t development

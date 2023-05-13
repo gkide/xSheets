@@ -1,5 +1,5 @@
 ---
-tags: [ developer ]
+tags: [ development ]
 ---
 # ☛ Linux安装SSH客户端及服务端
 
@@ -19,4 +19,4 @@ sudo apt-get install openssh-server
 ############
 # Also See #
 ############
-cheat -t developer
+cheat -t development

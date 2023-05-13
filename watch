@@ -1,5 +1,5 @@
 ---
-tags: [ developer, todo ]
+tags: [ development, todo ]
 ---
 # watch 命令周期性的执行相关程序并显示执行结果
 # 可以用来实时监控某些命令的运行结果
@@ -10,4 +10,4 @@ watch ...
 ############
 # Also See #
 ############
-cheat -t developer
+cheat -t development

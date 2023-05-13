@@ -1,5 +1,5 @@
 ---
-tags: [ developer ]
+tags: [ development ]
 ---
 # GET 请求，显示响应内容
 curl https://www.example.com
@@ -22,4 +22,4 @@ curl -e "https://www.baidu.com" https://www.example.com
 ############
 # Also See #
 ############
-cheat -t developer
+cheat -t development

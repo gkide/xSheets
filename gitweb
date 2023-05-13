@@ -1,0 +1,35 @@
+---
+tags: [ development ]
+---
+# lighttpd is a small webserver and fast webserver with minimal memory
+sudo apt install gitweb lighttpd
+
+systemctl status lighttpd.service       # 查看服务状态
+
+sudo systemctl start lighttpd.service   # 立即启动服务
+sudo systemctl stop  lighttpd.service   # 立即停止服务
+
+sudo systemctl enable lighttpd.service  # 启用服务
+sudo systemctl disable lighttpd.service # 禁用服务
+
+cat /etc/lighttpd/lighttpd.conf         # 默认配置
+http://localhost                        # 访问页面
+http://localhost:8080                   # 访问页面
+
+cd path/to/repo             # 进入仓库目录
+git instaweb --help         # 显示帮助信息
+git instaweb --start        # 启用服务
+
+# path/to/repo/.git/gitweb  # 生成配置内容
+ps -ef | grep lighttpd      # 查看进程信息
+cat .git/gitweb/lighttpd.conf
+
+http://localhost:1234       # 浏览器访问
+http://127.0.0.1:1234       # 浏览器访问
+
+git instaweb --stop         # 停止服务并退出
+
+############
+# Also See #
+############
+cheat -t development

@@ -7,6 +7,11 @@ ls /lib/modules/$(uname -r)
 # List the loaded kernel modules
 lsmod # 读取 /proc/modules 并格式化显示
 
+modinfo nvidia # 显示内核模块信息
+
+lsusb # 显示USB设备
+lsblk # 显示块设备
+
 ############
 # Also See #
 ############

@@ -1,7 +1,30 @@
 ---
 tags: [ development ]
 ---
+# 大型仓库节省下载时间和磁盘空间
+git clone https://mirrors.tuna.tsinghua.edu.cn/git/linux.git torvalds # 清华大学镜像
+cd torvalds
+git remote rename origin xlinus
+echo "Linux Kernel Mainline Source Tree" > .git/description
+git remote add linus https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+git branch --set-upstream-to=linus/master master && git pull
+# 节省下载时间和磁盘空间方式一
+cd .. && git clone --reference torvalds https://mirrors.tuna.tsinghua.edu.cn/git/linux-next.git knext
+# 节省下载时间和磁盘空间方式二
+# https://www.kernel.org/doc/man-pages/linux-next.html
+git remote add linux-next https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
+git fetch linux-next && git fetch --tags linux-next
+
 git switch --help # 分支切换
+# 设置分支的 upstream
+git branch --set-upstream-to=origin/master master
+
+git stash # 将所有未提交的修改保存至堆栈中，后续恢复当前工作目录
+git stash list # 查看当前stash中的内容
+git stash pop # 弹出 stash 中的内容并应用到当前分支，先进后出
+git stash apply # 将堆栈中的内容应用到当前目录，不会将内容从堆栈中删除
+git stash drop + 名称 # 从堆栈中移除某个指定的stash
+git stash clear # 清除堆栈中的所有内容
 
 # 获取 <远程分支> 并合并到 <本地分支>
 git pull <远程名> <远程分支>:<本地分支>
@@ -16,7 +39,6 @@ git pull 等价于 git fetch; git merge FETCH_HEAD
 # 本地分支 关联 远程分支
 git branch --set-upstream-to=远程名/远程分支 本地分支
 git branch -vv                # 显示当前分支关联的远程分支
-
 git status -b --porcelain     # 显示当前分支关联的远程分支
 git status -b --porcelain=v1  # 显示当前分支关联的远程分支
 git status -b --porcelain=v2  # 显示当前分支关联的远程分支
@@ -24,6 +46,10 @@ git status -b --porcelain=v2  # 显示当前分支关联的远程分支
 # branch.head     <branch>|(detached)     Current branch
 # branch.upstream <upstreamBranch>        If upstream is set
 # branch.ab       +<ahead>  -<behind>     If upstream is set and the commit is present
+
+git diff Repo1 Repo2 # 比较两个同源仓库的差异
+git diff Branch1 origin/Branch2 # 比较两个分支之间的差异
+git diff Branch1 Branch2 file.c # 比较两个分支的 file.c 文件的差异
 
 # git 非正式补丁
 git diff > commit.patch                     # 已修改，未添加，未提交
@@ -60,16 +86,6 @@ git send-email \
 --cc=charlie-wong@outlook.com \
 --subject='[RFC PATCH 0/2] mm: git send-email Test' \
 ./outgoing/*
-
-# 设置分支的 upstream
-git branch --set-upstream-to=origin/master master
-
-git stash # 将所有未提交的修改保存至堆栈中，后续恢复当前工作目录
-git stash list # 查看当前stash中的内容
-git stash pop # 弹出 stash 中的内容并应用到当前分支，先进后出
-git stash apply # 将堆栈中的内容应用到当前目录，不会将内容从堆栈中删除
-git stash drop + 名称 # 从堆栈中移除某个指定的stash
-git stash clear # 清除堆栈中的所有内容
 
 ############
 # Also See #

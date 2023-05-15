@@ -1,0 +1,39 @@
+---
+tags: [ git, development ]
+---
+# 正式补丁生成命令两种格式
+# 格式一、$ git format-patch xxx
+# 格式二、$ git format-patch xxx1 xxx1
+
+# 格式一、打包 HEAD 对应的 commit(含) 以前的 N(是^的数量) 个 commit 的补丁
+git format-patch HEAD^ # 生成 HEAD 对应的 commit 的补丁
+# 格式一、打包从当前 commit(含) 向前(Init方向) 的 N 个 commit 的补丁
+git format-patch -N    # N 等于 1 时，此命令和 HEAD^ 等效
+# 格式一、打包 commitID/tagID(不含) 以后的所有 commit 的补丁
+git format-patch commitID/tagID
+
+# 格式二、打包 commitID/tagID(含) 之前的 N 次提交的所有 commit 的补丁
+git format-patch -N commitID/tagID
+# 格式二、打包 commitID1(不含) 和 commitID2(含) 之间的所有 commit 的补丁
+git format-patch commitID1..commitID2
+
+git apply --check commit.patch # 检查 patch 是否可以应用
+git apply commit.patch         # 应用补丁文件
+
+# git 邮件发送补丁文件
+# => outgoing/      目录存放补丁文件
+# --smtp-debug=1    调试 git send-email 命令
+git send-email outgoing/* --smtp-debug=1 --to=1213charlie@163.com
+git send-email \
+  --smtp-debug=1 \
+  --to=1213charlie@163.com \
+  --cc=charlie-wong@foxmail.com \
+  --cc=charlie-wong@outlook.com \
+  --subject='[RFC PATCH 0/2] mm: git send-email Test' \
+  ./outgoing/*
+
+############
+# Also See #
+############
+cheat -t git
+cheat -t development

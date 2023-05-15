@@ -1,0 +1,19 @@
+---
+tags: [ git, development ]
+---
+git diff Repo1 Repo2 # 比较两个同源仓库的差异
+git diff Branch1 origin/Branch2 # 比较两个分支之间的差异
+git diff Branch1 Branch2 file.c # 比较两个分支的 file.c 文件的差异
+
+# git 非正式补丁
+git diff > commit.patch                     # 已修改，未添加，未提交
+git diff --cached > commit.patch            # 已修改，已添加，未提交
+git diff CommitID1 CommitID2 > commit.patch # 已修改，已添加，已提交
+
+diff ...
+
+############
+# Also See #
+############
+cheat -t git
+cheat -t development

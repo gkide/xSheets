@@ -1,5 +1,5 @@
 ---
-tags: [ development ]
+tags: [ git, development ]
 ---
 # 大型仓库节省下载时间和磁盘空间
 git clone https://mirrors.tuna.tsinghua.edu.cn/git/linux.git torvalds # 清华大学镜像
@@ -15,79 +15,8 @@ cd .. && git clone --reference torvalds https://mirrors.tuna.tsinghua.edu.cn/git
 git remote add linux-next https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
 git fetch linux-next && git fetch --tags linux-next
 
-git switch --help # 分支切换
-# 设置分支的 upstream
-git branch --set-upstream-to=origin/master master
-
-git stash # 将所有未提交的修改保存至堆栈中，后续恢复当前工作目录
-git stash list # 查看当前stash中的内容
-git stash pop # 弹出 stash 中的内容并应用到当前分支，先进后出
-git stash apply # 将堆栈中的内容应用到当前目录，不会将内容从堆栈中删除
-git stash drop + 名称 # 从堆栈中移除某个指定的stash
-git stash clear # 清除堆栈中的所有内容
-
-# 获取 <远程分支> 并合并到 <本地分支>
-git pull <远程名> <远程分支>:<本地分支>
-
-# 获取远程 master 分支并合并到本地 master 分支
-git pull origin master
-git pull <远程名> <分支>
-
-# 应用 .git/config 的默认配置
-git pull 等价于 git fetch; git merge FETCH_HEAD
-
-# 本地分支 关联 远程分支
-git branch --set-upstream-to=远程名/远程分支 本地分支
-git branch -vv                # 显示当前分支关联的远程分支
-git status -b --porcelain     # 显示当前分支关联的远程分支
-git status -b --porcelain=v1  # 显示当前分支关联的远程分支
-git status -b --porcelain=v2  # 显示当前分支关联的远程分支
-# branch.oid      <commit>                Current commit
-# branch.head     <branch>|(detached)     Current branch
-# branch.upstream <upstreamBranch>        If upstream is set
-# branch.ab       +<ahead>  -<behind>     If upstream is set and the commit is present
-
-git diff Repo1 Repo2 # 比较两个同源仓库的差异
-git diff Branch1 origin/Branch2 # 比较两个分支之间的差异
-git diff Branch1 Branch2 file.c # 比较两个分支的 file.c 文件的差异
-
-# git 非正式补丁
-git diff > commit.patch                     # 已修改，未添加，未提交
-git diff --cached > commit.patch            # 已修改，已添加，未提交
-git diff CommitID1 CommitID2 > commit.patch # 已修改，已添加，已提交
-
-git apply --check commit.patch # 检查 patch 是否可以应用
-git apply commit.patch         # 应用补丁文件
-
-# 正式补丁生成命令两种格式
-# 格式一、$ git format-patch xxx
-# 格式二、$ git format-patch xxx1 xxx1
-
-# 格式一、打包 HEAD 对应的 commit(含) 以前的 N(是^的数量) 个 commit 的补丁
-git format-patch HEAD^ # 生成 HEAD 对应的 commit 的补丁
-# 格式一、打包从当前 commit(含) 向前(Init方向) 的 N 个 commit 的补丁
-git format-patch -N    # N 等于 1 时，此命令和 HEAD^ 等效
-# 格式一、打包 commitID/tagID(不含) 以后的所有 commit 的补丁
-git format-patch commitID/tagID
-
-# 格式二、打包 commitID/tagID(含) 之前的 N 次提交的所有 commit 的补丁
-git format-patch -N commitID/tagID
-# 格式二、打包 commitID1(不含) 和 commitID2(含) 之间的所有 commit 的补丁
-git format-patch commitID1..commitID2
-
-# git 邮件发送补丁文件
-# => outgoing/      目录存放补丁文件
-# --smtp-debug=1    调试 git send-email 命令
-git send-email outgoing/* --smtp-debug=1 --to=1213charlie@163.com
-git send-email \
---smtp-debug=1 \
---to=1213charlie@163.com \
---cc=charlie-wong@foxmail.com \
---cc=charlie-wong@outlook.com \
---subject='[RFC PATCH 0/2] mm: git send-email Test' \
-./outgoing/*
-
 ############
 # Also See #
 ############
+cheat -t git
 cheat -t development

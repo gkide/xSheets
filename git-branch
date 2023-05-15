@@ -1,0 +1,32 @@
+---
+tags: [ git, development ]
+---
+git branch NewBranch  # 创建新分支
+git switch NewBranch  # 创建新分支
+
+# 基于 StartPoint 创建新分支
+git switch NewBranch StartPoint
+
+git switch --help     # 分支切换
+git checkout 分支名   # 分支切换
+
+# 设置分支的 upstream
+git branch --set-upstream-to=origin/master master
+
+# 本地分支关联远程分支
+git branch --set-upstream-to=远程名/远程分支 本地分支
+git branch -vv                # 显示当前分支关联的远程分支
+
+git status -b --porcelain     # 显示当前分支关联的远程分支
+git status -b --porcelain=v1  # 显示当前分支关联的远程分支
+git status -b --porcelain=v2  # 显示当前分支关联的远程分支
+# branch.oid      <commit>                Current commit
+# branch.head     <branch>|(detached)     Current branch
+# branch.upstream <upstreamBranch>        If upstream is set
+# branch.ab       +<ahead>  -<behind>     If upstream is set and the commit is present
+
+############
+# Also See #
+############
+cheat -t git
+cheat -t development

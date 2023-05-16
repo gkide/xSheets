@@ -1,0 +1,27 @@
+---
+tags: [ shell, bash, zsh ]
+---
+if COND; then
+  ...
+fi
+
+if COND; then
+  ...
+else
+  ...
+fi
+
+if COND; then
+  ...
+elif COND; then
+  ...
+else
+  ...
+fi
+
+############
+# Also See #
+############
+cheat -t zsh
+cheat -t bash
+cheat -t shell

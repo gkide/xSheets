@@ -1,0 +1,40 @@
+---
+tags: [ shell, bash, zsh ]
+---
+# 0   stdin     标准输入    /dev/stdin
+# 1   stdout    标准输出    /dev/stdout
+# 2   stderr    标准错误    /dev/stderr
+# => https://zsh.sourceforge.io/Doc/Release/Redirection.html
+# => https://www.gnu.org/software/bash/manual/html_node/Redirections.html
+
+>  file  # 覆盖式重定向到文件 file, file 不存在则创建, 默认 stdout
+1> file  # 覆盖式重定向到文件 file, file 不存在则创建, 明确 stdout
+>> file  # 追加式重定向到文件 file, file 不存在则创建, 默认 stdout
+1>> file # 追加式重定向到文件 file, file 不存在则创建, 明确 stdout
+
+2> file  # 覆盖式重定向到文件 file, file 不存在则创建, 明确 stderr
+2>> file # 追加式重定向到文件 file, file 不存在则创建, 明确 stderr
+
+# 将 cmd 命令的 stdout 和 stderr 同时重定向到 cmd
+cmd  > cmd.log 2>&1 # all shell works well
+cmd 1> cmd.log 2>&1 # all shell works well
+cmd >& cmd.log      # bash/zsh works well
+cmd &> cmd.log      # bash/zsh works well, preferred
+
+# 将 cmd 命令的 stdout 和 stderr 同时追加重定向到 cmd.log
+cmd &>> cmd.log     # only way works for bash
+cmd >>& cmd.log     # also works for zsh
+cmd >> cmd.log 2>&1
+
+# 将 cmd1 命令的 stdout 重定向到 cmd2 命令的 stdin
+cmd1 | cmd2
+
+# 将 cmd 命令的 stdin 重定向为 file 文件
+cmd < file
+
+############
+# Also See #
+############
+cheat -t zsh
+cheat -t bash
+cheat -t shell

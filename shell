@@ -1,29 +1,30 @@
 ---
-tags: [ terminal, shell ]
+tags: [ shell ]
 ---
-############################
-# 查看当前用户的默认 shell #
-############################
+# Shell 配置加载
+# => IS    Interactive Shell       交互式      等待用户输入命令
+# => NIS   Non-Interactive Shell   非交互式    运行脚步文件，不用等待用户输入命令
+# => LS    Login Shell             登陆式      打开时需要输入用户名和密码
+# => NLS   Non-Login Shell         非登陆式    打开是不需要输入用户名和密码
+cheat bash
+
+# 显示系统已经安装的 shell
+cat /etc/shells
+
+# 查看当前用户的默认 shell
 printenv SHELL
 grep `whoami` /etc/passwd
 
 # 更改系统创建用户时的默认 shell
 SHELL=/bin/bash # 修改 /etc/default/useradd 文件
 
-# 显示系统已经安装的 shell
-cat /etc/shells
-
-#################################################
-# 将 UserName 用户的默认 shell 修改为 /bin/bash #
-#################################################
+# 将 UserName 用户的默认 shell 修改为 /bin/bash
 sudo chsh -s /bin/bash UserName # 修改 /etc/passwd 文件
 sudo usermod -s /bin/bash UserName # -s is short of --shell
 sudo usermod --shell /bin/bash UserName # 修改 /etc/passwd 文件
 # NOTE: 修改默认 shell 后需要 logout 再 login 后生效
 
-############################
-# 查看当前正在使用的 shell #
-############################
+# 查看当前正在使用的 shell
 # $0 is the name of the running process. If you use it inside
 # of a shell then it will return the name of the shell. If you
 # use it inside of a script, it will be the name of the script.
@@ -51,20 +52,20 @@ echo $0 # => for bash, $0 output 'bash' for non-login shell, '-bash' for login s
 [[ "$-" == "*i*" ]] && echo "Interactive" || echo "Not Interactive" # for bash & zsh
 
 # Check Interactive Shell or Non-Interactive Shell in script
-  if [ -z $PS1 ]; then
-    ... # Non-Interactive Shell
-  else
-    ... # Interactive Shell
-  fi
+if [ -z $PS1 ]; then
+  ... # Non-Interactive Shell
+else
+  ... # Interactive Shell
+fi
 
-  case $- in
-    *i*)
-      ... # Interactive Shell
-      ;;
-    *)
-      ... # Non-Interactive Shell
-      ;;
-  esac
+case $- in
+  *i*)
+    ... # Interactive Shell
+    ;;
+  *)
+    ... # Non-Interactive Shell
+    ;;
+esac
 
 ############
 # Also See #
@@ -72,4 +73,3 @@ echo $0 # => for bash, $0 output 'bash' for non-login shell, '-bash' for login s
 cheat -t zsh
 cheat -t bash
 cheat -t shell
-cheat -t terminal

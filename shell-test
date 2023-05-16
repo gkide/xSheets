@@ -1,0 +1,58 @@
+---
+tags: [ shell, bash, zsh ]
+---
+# test 和 [ ] 检测, 符合 POSIX 标准，兼容性更强
+[ $a -eq $b ]   # 数值比较, 相等则 true
+[ $a -ne $b ]   # 数值比较, 不等则 true
+[ $a -gt $b ]   # 数值比较, a > b  则 true
+[ $a -lt $b ]   # 数值比较, a < b  则 true
+[ $a -ge $b ]   # 数值比较, a >= b 则 true
+[ $a -le $b ]   # 数值比较, a <= b 则 true
+
+[ -z "$Var" ]   # 字符串为空，则 true
+[ -n "$Var" ]   # 字符串非空，则 true
+
+[ $a == $b ]    # 字符串比较, 相等则 true
+[ $a != $b ]    # 字符串比较, 不等则 true
+
+[ ! EXPR ]           # 非运算
+[ EXPR1 -o EXPR2 ]   # 或运算
+[ EXPR1 -a EXPR2 ]   # 与运算
+
+-a/-e FILE  # True if file exists
+-h/-L FILE  # True if file is a symbolic link
+-s FILE     # True if file exists and is not empty
+
+-d FILE     # True if file is a directory
+-f FILE     # True if file exists and is a regular file
+
+-r FILE     # True if file is readable by you
+-w FILE     # True if the file is writable by you
+-x FILE     # True if the file is executable by you
+-O FILE     # True if the file is effectively owned by you
+-G FILE     # True if the file is effectively owned by your group
+
+FILE1 -ef FILE2  # True if file1 is a hard link to file2
+FILE1 -nt FILE2  # True if file1 is newer than file2, according to modification date
+FILE1 -ot FILE2  # True if file1 is older than file2, according to modification date
+
+[[ ! EXPR ]]
+[[ EXPR1 || EXPR2 ]]
+[[ EXPR1 && EXPR2 ]]
+
+v="A*"; [ $v == A* ] && echo Y || echo N    # 字符匹配 => Y
+v="Aab"; [ $v == A* ] && echo Y || echo N   # 字符匹配 => N
+
+v="Aab"; [[ $v == A* ]] && echo Y || echo N # 模式匹配 => Y
+v="hello world"; [[ $v =~ "world" ]] && echo Y || echo N    # 正则匹配 => Y
+
+# 使用 () 进行分组
+ [ 1 == 1 -a (2 == 2 -o 3 == 4) ]  && echo Y || echo N # 仅脚本运行时支持 => Y
+[[ 1 == 1 && (2 == 2 || 3 == 4) ]] && echo Y || echo N # 脚本/手动输入均支持 => Y
+
+############
+# Also See #
+############
+cheat -t zsh
+cheat -t bash
+cheat -t shell

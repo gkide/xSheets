@@ -1,0 +1,25 @@
+---
+tags: [ shell, bash, zsh ]
+---
+# 数学运算, bash 不支持简单的数学运算，通常要通过其它命令来实现
+a=1; b=2;
+expr $a + $b    # 加法
+expr $a - $b    # 减法
+expr $a \* $b   # 乘法
+expr $b / $a    # 除法
+expr $b % $a    # 取余
+a=$b            # 赋值
+
+echo $[1+2]                   # 计算并显示
+let var=a+b                   # 计算并将结果赋值给变量
+val=`expr $a + $b`            # 计算并将结果赋值给变量
+val=$(expr $a + $b)           # 计算并将结果赋值给变量
+((val=a+b))                   # 常在 if/for/while 条件判断中需要计算时使用
+var=$(echo "(1.1+2.1)" | bc)  # 调用 bc 计算器
+
+############
+# Also See #
+############
+cheat -t zsh
+cheat -t bash
+cheat -t shell

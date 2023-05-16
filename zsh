@@ -1,5 +1,5 @@
 ---
-tags: [ zsh ]
+tags: [ shell, zsh ]
 ---
 #############################
 # 关于 shell 内置的帮助函数 #
@@ -77,4 +77,4 @@ zsh -v          # 显示 zsh 所有加载的配置内容, 等同于 --verbose
 # Also See #
 ############
 cheat -t shell
-cheat -t terminal
+cheat -t bash

@@ -1,0 +1,79 @@
+---
+tags: [ shell, bash, zsh ]
+---
+# https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html
+set -e # 如果命令返回非 0 值，则立即退出
+
+# 特殊变量    预定义的, 内置的特殊变量
+# 环境变量    所有的程序均可访问，export VarName=...
+# 局部变量    在脚本或命令中定义，仅当前 shell 实例中有效
+
+# 传参传递
+$0  # 代表执行的脚本文件名
+$$  # 脚本运行的当前进程号
+$！ # 后台运行的最后一个进程的 ID
+$?  # 显示最后命令的退出状态: 0表示没有错误，其它值表示有错误
+$-  # 代表 shell 运行时使用的 shell 选项 /set 命令值的列表
+
+$1  # 代表传入的第1个参数, 脚本/函数第 1 个参数
+$n  # 代表传入的第n个参数, 脚本/函数第 2 个参数
+
+$#  # 参数个数, 脚本/函数参数个数
+$*  # 以单个字符串显示所有参数
+$@  # 与 $* 相同，但是使用时加引号，并在引号中返回每个参数
+
+# 特殊含义的字符
+'...'   # 取消一切元字符的特殊含义，只保留其字面含义
+"..."   # 取消部分元字符的特殊含义
+:       # 空命令，返回 ture，可以在做为无限循环的条件
+
+# 终端颜色和转移序列
+man ascii # 显示 ASCII 编码表
+man terminal-colors.d # 显示 ANSI 颜色编码表
+man console_codes # Linux console escape and control sequences
+
+# 环境变量
+env # 显示当前环境变量及其值
+printenv # 显示当前环境变量及其值
+printenv VAR # 显示指定环境变量的值
+echo $PATH | sed 's/:/\n/g' # 逐行显示 PATH 的值
+env EnvName=Value Program # 修改 Program 程序执行时的环境变量
+
+$USER       # 当前登录 shell 的用户名
+$IFS        # 内部域分割符, 默认值是 space、tap、newline
+$UID        # 当前登录用户的用户ID, root 用户的用户ID是0
+$LINENO     # 脚本中当前正在执行的行的行号，起始值1
+$FUNCNAME   # 数组变量，表示调用链上所有的函数名, 只有当shell函数被执行时变量才存在
+FUNCNAME[0] # 表示当前正在执行的shell函数
+FUNCNAME[1] # 表示调用当前函数的函数名
+
+# 本地化设置
+locale # 显示本地化语言设置
+export LANG=en_US.UTF-8 # 终端执行，临时设置为英语 UTF-8
+export LANG=zh_CN.UTF-8 # 终端执行，临时设置为中文 UTF-8
+export LANGUAGE=zh_CN.UTF-8 # 终端执行，临时设置翻译目标语言为中文
+export LANGUAGE=en_US.UTF-8:zh_CN.UTF-8 # 终端执行，临时设置翻译目标语言
+
+function funcName() { # function 关键字可以省略
+  local xyz="what" # 函数局部变量，仅函数内可以访问
+  ... # 函数返回值只能是整数
+  return 0; # 返回 0 表示成功，非 0 表示失败
+}
+
+# 布尔类型
+true    # 表示逻辑真，即执行成功
+false   # 表示逻辑假，即执行失败
+
+# Here Document, 一种特殊的重定向方式
+# => delimiter, 可以是任意字符串
+command << Delimiter
+all the stuff will
+send to command, include new-line LF
+Delimiter
+
+############
+# Also See #
+############
+cheat -t zsh
+cheat -t bash
+cheat -t shell

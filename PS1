@@ -1,5 +1,5 @@
 ---
-tags: [ terminal ]
+tags: [ shell ]
 ---
 # Customizing Bash Prompt on Linux
 # => https://help.ubuntu.com/community/CustomizingBashPrompt
@@ -33,7 +33,7 @@ PS4
 \H            # The full hostname
 \h            # The hostname up to the first '.'
 \j            # The number of jobs currently managed by the shell
-\l            # The basename of the shellâ€™s terminal device name
+\l            # The basename of the shell terminal device name
 \n            # Newline
 \r            # Carriage return
 \s            # The name of the shell, the basename of $0 (the portion following the final slash)
@@ -89,4 +89,6 @@ echo -e "\e[32;41mTEXT\e[m"
 ############
 # Also See #
 ############
-cheat -t terminal
+cheat -t zsh
+cheat -t bash
+cheat -t shell

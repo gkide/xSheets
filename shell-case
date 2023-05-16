@@ -1,0 +1,29 @@
+---
+tags: [ shell, bash, zsh ]
+---
+case "$VAR" in
+  "what") # VAR 检测是否匹配 what
+    ;; # 表示 break，跳出整个 case … esac 语句
+  "x1"|"x2") # 匹配 x1 或 x2
+  ...
+  *) # 上述均没有匹配，则匹配此项
+    ;;
+esac
+
+select VAR in Seq1 Seq2 ...; do
+  # 显示出带编号的菜单，用户出入不同编号
+  # 就可以选择不同的菜单，并执行不同的功能
+  ...
+done
+
+select VAR in "Linux" "Mac" "Win"; do
+  break;
+done
+echo "You have selected $VAR"
+
+############
+# Also See #
+############
+cheat -t zsh
+cheat -t bash
+cheat -t shell

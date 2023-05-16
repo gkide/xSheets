@@ -1,0 +1,60 @@
+---
+tags: [ shell, bash, zsh ]
+---
+# The trap keyword catches signals that may happen during execution.
+# https://phoenixnap.com/kb/bash-trap-command
+# https://opensource.com/article/20/6/bash-trap
+
+# 显示信号列表
+bash # 启动 bash
+trap -l
+trap --help
+
+# Ctrl+C => SIGINT
+#
+#  EXIT: Occurs when the shell process itself exits
+#   ERR: Occurs when a command or a built-in command completes with a non-zero status
+# DEBUG: A Boolean representing debug mode
+
+# 示例一调用命令
+# => $ bash trap-debug.sh
+#
+# 写入文件 => trap-debug.sh
+trap 'echo "[$LINENO] => a=${a}, b=${b}, c=${c}"' DEBUG
+a=1; b=2; c=3;
+echo "a b c = $a $b $c "
+echo "位置参数个数 $#"
+echo "位置参数列表 $@"
+
+# 示例一调用命令
+# => $ bash trap-sigint.sh
+#
+# 写入文件 => trap-sigint.sh
+xTmpFile="/tmp/my_tmp_file_$$"
+trap 'rm -f $xTmpFile' SIGINT # 当有 SIGINT 信号时执行 rm 语句
+echo "Creating file $xTmpFile"
+date > $xTmpFile
+echo "Press Ctrl+C to interrupt ..."
+while [ -f $xTmpFile ]; do
+  echo "Exists => $xTmpFile"
+  sleep 5 # 5 秒
+done
+echo "重置 SIGINT 信号默认动作"
+sleep 5
+clear
+trap SIGINT
+# SIGINT 信号默认对应的操作是终止当前进程
+echo "Creating file $xTmpFile"
+date > $xTmpFile
+echo "Press Ctrl+C to interrupt ..."
+while [ -f $xTmpFile ]; do
+  echo "Exists => $xTmpFile"
+  sleep 5 # 5 秒
+done
+
+############
+# Also See #
+############
+cheat -t zsh
+cheat -t bash
+cheat -t shell

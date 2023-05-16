@@ -1,8 +1,7 @@
 ---
-tags: [ bash ]
+tags: [ shell, bash ]
 ---
 # Bash 配置文件加载顺序
-#
 # Read down the appropriate column. Executes A, then B, then C, etc.
 # The B1, B2, B3 means it executes only the first of those files found.
 # (A) or (B3) means it is normally sourced by (read by and included in)
@@ -57,4 +56,3 @@ tags: [ bash ]
 ############
 cheat -t zsh
 cheat -t shell
-cheat -t terminal

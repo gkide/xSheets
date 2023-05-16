@@ -1,0 +1,79 @@
+---
+tags: [ shell, bash, zsh ]
+---
+# for (( ; ; )); do # 无限循环
+for ((i=1;i<=10;i++)); do
+  echo $(expr $i \* 3 + 1);
+  # break
+  # continue
+done
+
+# for Var in item1 item2 ... itemN; do
+
+for i in $(seq 1 10); do
+  echo $(expr $i \* 3 + 1);
+done
+
+for i in {1..10}; do
+  echo $(expr $i \* 3 + 1);
+done
+
+for i in $*; do
+  echo "input chart $i";
+done
+
+for i in `ls`; do
+  echo "file name: $i";
+done
+
+for file in $(ls); do
+  echo "file name: $file";
+done
+
+for file in /proc/*; do
+  echo "file name: $file";
+done
+
+for i in f1 f2 f3; do
+  echo "=> $i";
+done
+
+list="rootfs usr data data2"
+for i in $list; do
+  echo "=> $i";
+done
+
+# Color
+N='\e[0m'
+R='\e[0;31m'
+G='\e[0;32m'
+Y='\e[0;33m'
+B='\e[0;34m'
+
+ciphers=(
+  aes-256-gcm
+  aes-192-gcm
+  aes-128-gcm
+  aes-256-ctr
+  aes-192-ctr
+  aes-128-ctr
+  aes-256-cfb
+  aes-192-cfb
+  aes-128-cfb
+)
+
+# anum=${#ciphers[@]} # 数组 Items 数
+# ${ciphers[*]} # 数组内容
+for ((i=1; i<=${#ciphers[@]}; i++)); do
+  hint="${ciphers[$i-1]}"
+  echo -e "${G}${i}${N}) ${hint}"
+done
+
+awk 'BEGIN { for(i=1; i<=10; i++) print i; }'
+
+############
+# Also See #
+############
+cheat -t zsh
+cheat -t bash
+cheat -t shell

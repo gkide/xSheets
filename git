@@ -1,6 +1,11 @@
 ---
 tags: [ git, development ]
 ---
+.git/config 文件格式
+  branch.master.remote  # 当在分支 master 上时，它告诉 git fetch 和 git push 从哪个远程获取/推送到
+  [branch "master"]
+    remote = ...
+
 # 大型仓库节省下载时间和磁盘空间
 git clone https://mirrors.tuna.tsinghua.edu.cn/git/linux.git torvalds # 清华大学镜像
 cd torvalds

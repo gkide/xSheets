@@ -4,11 +4,14 @@ tags: [ git, development ]
 git branch -a # 显示所有分支列表
 git branch -r # 显示远程分支列表
 
-git remote                  # 显示远程分支列表
-git remote show             # 显示远程分支列表
-git remote show <远程分支>  # 显示远程分支信息
+git remote              # 显示远程分支列表
+git remote show         # 显示远程分支列表
+git remote show 远程名  # 显示远程分支信息
 
-git ls-remote <远程分支>    # 显示给定远程版本库的引用列表
+git ls-remote 远程      # 显示给定远程版本库的引用列表
+
+git remote update       # 更新所有远程仓库
+git remote update 远程  # 更新指定远程仓库
 
 ############
 # Also See #

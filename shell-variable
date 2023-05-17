@@ -22,6 +22,7 @@ echo "Alex" | awk '{ print length($0) }'
 ${#VAR} # 计算并显示 VAR 变量字符串的长度
 
 # 变量扩展
+${0##*/}      # Shell 脚本文件名
 
 echo "${VAR}" # 用花括号将变量名括起来，用作变量名的界定符号
 echo $(who)   # 用圆括号将变量名括起来，将其视为 shell 命令执行

@@ -23,6 +23,6 @@ upower -i `upower -e | grep 'BAT'`
 ############
 # Also See #
 ############
-cheat -t battery
 cheat -t power
 cheat -t energy
+cheat -t battery

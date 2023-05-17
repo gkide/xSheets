@@ -1,5 +1,5 @@
 ---
-tags: [ package management, ubuntu, kubuntu ]
+tags: [ packaging ]
 ---
 # 显示所有已经安装的软件包列表
 dpkg --get-selections
@@ -23,8 +23,7 @@ dpkg -l | grep '^rc' | awk '{print $2}'
 # 显示所有已经删除但保留配置的软件包，然后将保留的配置删除
 dpkg -l | grep '^rc' | awk '{print $2}' | sudo xargs dpkg --purge
 
-
 ############
 # Also See #
 ############
-cheat -t 'package management'
+cheat -t packaging

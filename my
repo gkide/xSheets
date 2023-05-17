@@ -1,7 +1,0 @@
----
-tags: [ my ]
----
-# 文件字符编码
-file FileName # 查看文件编码
-file -bi FileName # 查看文件编码
-encguess FileName # 查看文件编码

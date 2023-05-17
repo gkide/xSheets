@@ -5,8 +5,8 @@ npm config get prefix     # 获取 NodeJS 安装路径
 npm config get registry   # 获取 npm 当前在使用的源
 npm config get userconfig # 获取 .npmrc 用户配置文件路径
 
-npm config set registry https://registry.npmjs.org/       # 将 npm 源设置 NPM 官方地址
-npm config set registry https://registry.npmmirror.com/   # 将 npm 源设置成淘宝的国内镜像
+npm config set registry https://registry.npmjs.org/      # 将 npm 源设置 NPM 官方地址
+npm config set registry https://registry.npmmirror.com/  # 将 npm 源设置成淘宝的国内镜像
 
 # 使用淘宝镜像加速 electron 框架的安装
 npm config set ELECTRON_MIRROR http://npm.taobao.org/mirrors/electron/
@@ -52,3 +52,8 @@ npm whoami --registry=https://registry.npmjs.org # 修改国内源后指定官�
 
 npm publish # 发布当前目录下的软件包
 npm --force unpublish PackageName # 强制撤销发布
+
+############
+# Also See #
+############
+cheat -t development

@@ -1,5 +1,5 @@
 ---
-tags: [ package management, ubuntu, kubuntu ]
+tags: [ packaging ]
 ---
 # APT系统资源存储位置
 /var/lib/dpkg                     # dpkg 系统缓存
@@ -55,5 +55,4 @@ apt-rdepends PackageName            # 第三方查看依赖关系的工具
 ############
 # Also See #
 ############
-cheat -l apt
-cheat -t package management
+cheat -t packaging

@@ -1,9 +1,9 @@
 ---
-tags: [ package management ]
+tags: [ packaging, todo ]
 ---
-cheat snap-get # for details
+# TODO
 
 ############
 # Also See #
 ############
-cheat -t 'package management'
+cheat -t packaging

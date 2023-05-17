@@ -1,5 +1,5 @@
 ---
-tags: [ system info, system management ]
+tags: [ system ]
 ---
 who               # 查看当前登录用户名
 whois             # 查看当前登录用户名
@@ -34,7 +34,6 @@ su                  # 用户切换
 sudo, sudoedit      # 暂时通过另一个用户或 Root 用户来执行命令
 visudo              # 编辑 /etc/sudoers 文件的命令，也可以不用这个命令，直接编辑 /etc/sudoers 文件
 
-
 # 用户组管理命令
 addgroup, groupadd  # 添加用户组
 delgroup, groupdel  # 删除用户组
@@ -42,7 +41,6 @@ groupmod            # 修改用户组信息
 groups              # 显示用户所属的用户组
 grpck               # 通过 /etc/group 和 /etc/gshadow 文件内容的完整性
 grpconv, grpunconv  # 通过 /etc/group 和 /etc/gshadow 文件内容来同步或创建 /etc/group ，然后删除 gshadow 文件
-
 
 # 关于 /etc/skel 目录
 # 该目录一般是存放用户启动文件的目录，这个目录是由 root 权限控制，当我们添加用户时，
@@ -62,5 +60,4 @@ grpconv, grpunconv  # 通过 /etc/group 和 /etc/gshadow 文件内容来同步�
 ############
 # Also See #
 ############
-cheat -t 'system info'
-cheat -t 'system management'
+cheat -t system

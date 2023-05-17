@@ -1,5 +1,5 @@
 ---
-tags: [ package management, debian, ubuntu, kubuntu ]
+tags: [ packaging ]
 ---
 # Install the exactly version of package, works well to rollback a prvious version
 cat /var/log/dpkg.log | grep upgrade | grep PackageName # Pick the version you want
@@ -8,7 +8,4 @@ sudo apt install PackageName=PackageVersion # Rollback to PackageVersion
 ############
 # Also See #
 ############
-cheat -t debian
-cheat -t ubuntu
-cheat -t kubuntu
-cheat -t 'package management'
+cheat -t packaging

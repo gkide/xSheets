@@ -1,5 +1,5 @@
 ---
-tags: [ qt, gui ]
+tags: [ qt, graphic ]
 ---
 # 代码仓库
 https://code.qt.io/cgit/qtsdk/qtchooser.git
@@ -12,3 +12,9 @@ qtchooser --help
 qtchooser --print-env
 qtchooser ---list-versions
 export QT_SELECT=<list-versions显示的值>
+
+############
+# Also See #
+############
+cheat -t qt
+cheat -t graphic

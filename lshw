@@ -1,5 +1,5 @@
 ---
-tags: [ template ]
+tags: [ hardware ]
 ---
 # Outputs the device tree showing hardware paths
 lshw -short
@@ -14,4 +14,4 @@ lshw -class network # 显示网络相关设备信息
 ############
 # Also See #
 ############
-cheat -t template
+cheat -t hardware

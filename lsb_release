@@ -1,5 +1,5 @@
 ---
-tags: [ system info ]
+tags: [ system ]
 ---
 # Display distribution detail info
 lsb_release -a
@@ -19,4 +19,4 @@ lsb_release -ds
 ############
 # Also See #
 ############
-cheat -t 'system info'
+cheat -t system

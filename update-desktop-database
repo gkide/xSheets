@@ -1,11 +1,10 @@
 ---
-tags: [ template ]
+tags: [ system ]
 ---
-
-# This is xSheets template
+# Build cache database of MIME types handled by desktop files
 update-desktop-database $HOME/.local/share/applications/
 
 ############
 # Also See #
 ############
-cheat -t template
+cheat -t system

@@ -1,5 +1,5 @@
 ---
-tags: [ ubuntu, kubuntu, security ]
+tags: [ ubuntu, security ]
 ---
 # https://ubuntu.com/pro
 
@@ -21,5 +21,4 @@ pro security-status
 # Also See #
 ############
 cheat -t ubuntu
-cheat -t kubuntu
 cheat -t security

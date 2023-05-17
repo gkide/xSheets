@@ -1,5 +1,5 @@
 ---
-tags: [ package management ]
+tags: [ packaging ]
 ---
 # Managing updates
 # https://forum.snapcraft.io/t/managing-updates/7022
@@ -18,4 +18,4 @@ snap change ID # ID is the output of 'snap changes'
 ############
 # Also See #
 ############
-cheat -t 'package management'
+cheat -t packaging

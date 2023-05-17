@@ -1,3 +1,6 @@
+---
+tags: [ development, graphic ]
+---
 # https://imagemagick.org/script/mogrify.php
 
 # Resize all images starting with "DSC" to 800x600
@@ -25,3 +28,9 @@ mogrify -modulate {{200}} {{*}}
 # -crop         裁剪图片
 mogrify -crop 256x256+47+47 *.png
 mogrify -format png -resize 350x350! -background none *.svg
+
+############
+# Also See #
+############
+cheat -t graphic
+cheat -t development

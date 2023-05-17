@@ -13,8 +13,8 @@ tags: [ kernel ]
 # info      6   informational
 # debug     7   debug-level messages
 #
-journalctl -p alert..err      # Show log msg [1, 3]
-journalctl -p warning         # Show log msg <= 4
+journalctl -p alert..err # Show log msg [1, 3]
+journalctl -p warning    # Show log msg <= 4
 cheat dmesg # Also See
 
 # Check out the current disk usage of all journal files

@@ -9,6 +9,6 @@ TODOs ...
 ############
 # Also See #
 ############
-cheat -t battery
 cheat -t power
 cheat -t energy
+cheat -t battery

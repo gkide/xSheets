@@ -46,7 +46,7 @@ systemctl is-enabled systemd-backlight@backlight:intel_backlight.service # æŸ¥çœ
 
 # Differentiated System Description Table (DSDT)
 # => https://wiki.ubuntu.com/BIOSandUbuntu#Buggy%20DSDT
-cheat acpidump # ALSO SEE
+cheat acpidump
 
 ############
 # Also See #

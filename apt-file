@@ -1,5 +1,5 @@
 ---
-tags: [ package management, debian, ubuntu, kubuntu ]
+tags: [ packaging ]
 ---
 sudo apt install apt-file # 默认没有安装，需要手动安装
 sudo apt-file update # 安装后获取所有包的元数据，以供后续查询使用
@@ -10,7 +10,4 @@ apt-file search FileName  # 查询那个软件包内包含 FileName 文件
 ############
 # Also See #
 ############
-cheat -t debian
-cheat -t ubuntu
-cheat -t kubuntu
-cheat -t 'package management'
+cheat -t packaging

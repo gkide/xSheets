@@ -1,5 +1,5 @@
 ---
-tags: [ system, shell, bash, zsh ]
+tags: [ shell, bash, zsh ]
 ---
 # Managing the umask
 # The 'umask' utility can be used to display, set, or change the current or default value of the umask.
@@ -40,7 +40,6 @@ umask -S u=rw,g=r,o=r # set the umask to u=rw,g=r,o=r
 ############
 # Also See #
 ############
-cheat -t system
-cheat -t shell
-cheat -t bash
 cheat -t zsh
+cheat -t bash
+cheat -t shell

@@ -1,5 +1,5 @@
 ---
-tags: [ faq ]
+tags: [ system, howto, faq ]
 ---
 # 若以 Root 身份执命令 xxx 时报错 sudo: xxx: command not found，
 # 而以普通用户身份则可以正常执行，则大概率是 PATH 设置不同导致的
@@ -18,3 +18,5 @@ sudo env | grep PATH
 # Also See #
 ############
 cheat -t faq
+cheat -t howto
+cheat -t system

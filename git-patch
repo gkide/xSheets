@@ -20,7 +20,7 @@ git format-patch commitID1..commitID2
 git apply --check commit.patch # 检查 patch 是否可以应用
 git apply commit.patch         # 应用补丁文件
 
-# git 邮件发送补丁文件
+# 邮件发送补丁文件示例
 # => outgoing/      目录存放补丁文件
 # --smtp-debug=1    调试 git send-email 命令
 git send-email outgoing/* --smtp-debug=1 --to=1213charlie@163.com
@@ -29,7 +29,7 @@ git send-email \
   --to=1213charlie@163.com \
   --cc=charlie-wong@foxmail.com \
   --cc=charlie-wong@outlook.com \
-  --subject='[RFC PATCH 0/2] mm: git send-email Test' \
+  --subject='[RFC PATCH 0/2] mm: Git Send Patch Test' \
   ./outgoing/*
 
 ############

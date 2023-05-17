@@ -24,3 +24,8 @@ ip neighbour   # 显示所在局域网设备的MAC地址
 # ip 命令的 up 和 down 选项来激某个特定的接口
 sudo ip link set xxx down  # 停用 xxx 网卡接口
 sudo ip link set xxx up    # 启用 xxx 网卡接口
+
+############
+# Also See #
+############
+cheat -t networking

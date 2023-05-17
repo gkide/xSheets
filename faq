@@ -1,6 +1,11 @@
 ---
 tags: [ faq, howto ]
 ---
+# 文件字符编码
+file FileName     # 查看文件编码
+file -bi FileName # 查看文件编码
+encguess FileName # 查看文件编码
+
 # ☛ Ubuntu 不改名隐藏文件夹
 #
 # 目标：隐藏 ~/snap, ~/Public, ~/Templates, ~/Videos

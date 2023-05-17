@@ -1,7 +1,6 @@
 ---
-tags: [ system, system management, graphic ]
+tags: [ system, graphic ]
 ---
-
 # Find out the name of your graphic display device
 xrandr | grep " connected" | cut -f1 -d " "
 # Change the brightness using the display name
@@ -13,4 +12,3 @@ xrandr --output "$(xrandr | grep " connected" | cut -f1 -d " ")" --brightness 0.
 ############
 cheat -t system
 cheat -t graphic
-cheat -t 'system management'

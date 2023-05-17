@@ -10,5 +10,5 @@ pacmd list cards | grep -i "output|active"
 ############
 # Also See #
 ############
-cheat -t driver
 cheat -t sound
+cheat -t driver

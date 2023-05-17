@@ -82,6 +82,6 @@ sudo localectl set-locale LANGUAGE            # LANGUAGE 设置为空(方式二)
 ############
 # Also See #
 ############
+cheat -t shell
 cheat -t system
 cheat -t language
-cheat -t shell

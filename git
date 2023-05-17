@@ -6,6 +6,8 @@ tags: [ git, development ]
   [branch "master"]
     remote = ...
 
+git clone ... 命令无法获取远程仓库的 .git/description 文件，即 .git/description 仅本地有效!
+
 # 大型仓库节省下载时间和磁盘空间
 git clone https://mirrors.tuna.tsinghua.edu.cn/git/linux.git torvalds # 清华大学镜像
 cd torvalds

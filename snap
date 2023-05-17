@@ -1,5 +1,5 @@
 ---
-tags: [ package management ]
+tags: [ packaging ]
 ---
 # Print the version of snap client, snapd daemon, snap series number, os and kernel:
 snap version # 显示 snap 版本相关信息
@@ -50,4 +50,4 @@ sudo snap remove AppName --revision=RevisionName # Remove only the given revisio
 ############
 # Also See #
 ############
-cheat -t 'package management'
+cheat -t packaging

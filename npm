@@ -30,17 +30,25 @@ npm install -g nrm  # 安装 npm 下载使用的源管理器
 npm install -g semver@^7.3.7 --verbose
 npm install -g yarn
 
-# 命令行帐号/密码登录
-# 登陆时需要 registry 的值是 https://registry.npmjs.org/
-npm login
+# 命令行登录
+#
+# => 帐号/密码登录(方式一)
+npm login # 登陆到 registry
+npm login --registry=https://registry.npmjs.org
 -> 输入用户名
 -> 输入密码
 -> 输入邮箱获取的一次性验证码
 # 登录成功后 ~/.npmrc 生成如下内容
 # //registry.npmjs.org/:_authToken=....
 #
-# 设置访问 Token, 拥有　publish 权限, 网页登录　NPM 官方网站查看
-# //registry.npmjs.org/:_authToken=...
+# => 访问 Token 登录(方式二)
+#    NPM 官方网站查看 -> https://www.npmjs.com/settings/<YourAccount>/tokens
+#    配置文件 ~/.npmrc 添加如下行
+#    //registry.npmjs.org/:_authToken=...
+
+# 查看登陆状态
+npm whoami # 检查是否登陆到 registry
+npm whoami --registry=https://registry.npmjs.org # 修改国内源后指定官方源
 
 npm publish # 发布当前目录下的软件包
 npm --force unpublish PackageName # 强制撤销发布

@@ -1,0 +1,16 @@
+---
+tags: [ git, development ]
+---
+git config --system --list # => /etc/gitconfig
+git config --global --list # => ~/.gitconfig
+git config --local  --list # => .git/config => $GIT_DIR/config
+
+# --name-only     仅显示名字，不显示值
+git config --list --name-only --show-origin # 前缀显示配置文件路径
+git config --list --name-only --show-scope  # 前缀显示配置 Sope => system, global, local
+
+############
+# Also See #
+############
+cheat -t git
+cheat -t development

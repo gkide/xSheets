@@ -1,0 +1,20 @@
+---
+tags: [ compress, decompress ]
+---
+zip -sf XYZ.zip             # 查看压缩包文件列表
+zipinfo XYZ.zip             # 查看压缩包文件列表
+unzip -l XYZ.zip            # 查看压缩包文件列表
+
+zip XYZ.zip a.txt b.txt ... # 压缩生成 XYZ.zip 文件
+zip -e XYZ.zip a.txt ...    # 更新压缩文件，设置秘密
+
+unzip -p XYZ.zip FileName   # stdout 显示 FileName 文件内容
+
+unzip -c XYZ.zip            # 查看压缩包所有内文件的内容
+unzip -c XYZ.zip FileName   # 查看压缩包内指定文件内容
+
+############
+# Also See #
+############
+cheat -t compress
+cheat -t decompress
